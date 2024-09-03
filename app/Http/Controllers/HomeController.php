@@ -19,6 +19,29 @@ class HomeController extends Controller
         return view("client.contact");
     }
 
+    public function about()
+    {
+        return view("client.about-us");
+    }
+
+    public function categories()
+    {
+        return view("client.categorie");
+    }
+    public function faq()
+    {
+        return view("client.faq");
+    }
+    public function listing()
+    {
+        return view("client.listing");
+    }
+
+    public function offers()
+    {
+        return view("client.offers");
+    }
+
     /**
      * Show the form for creating a new resource.
      */
