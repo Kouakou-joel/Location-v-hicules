@@ -23,14 +23,11 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
   </head>
   <body>
-    <div class="main-wrapper login-body">
+      <div class="main-wrapper login-body">
       <header class="log-header">
-        <a href="index.html"
-          ><img
-            class="img-fluid logo-dark"
-            src="assets/img/logo.svg"
-            alt="Logo"
-        /></a>
+        <a href="{{ route('home') }}">
+          <img class="img-fluid logo-dark" src="{{ asset('assets/img/logo.svg') }}" alt="Logo" />
+        </a>
       </header>
       <div class="login-wrapper">
         <div class="loginbox">
@@ -51,21 +48,21 @@
               <p class="account-subtitle">
                 Nous vous enverrons un code de confirmation par e-mail.
               </p>
-              <form action="index.html">
-                <div class="input-block">
-                  <label class="form-label"
+              <form action="index.html" method="POST">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-form-email"
                     >E-mail <span class="text-danger">*</span></label
                   >
-                  <input type="email" class="form-control" placeholder="" />
+                  <input type="email" class="form-control" id="basic-form-email"  placeholder="" />
                 </div>
-                <div class="input-block">
-                  <label class="form-label"
+                <div class="mb-3">
+                  <label class="form-label" for="basic-form-password"
                     >Mot de passe <span class="text-danger">*</span></label
                   >
                   <div class="pass-group">
                     <input
                       type="password"
-                      class="form-control pass-input"
+                      class="form-control pass-input" id="basic-form-password"
                       placeholder=""
                     />
                     <span class="fas fa-eye-slash toggle-password"></span>
@@ -90,38 +87,45 @@
                 >
                 <div class="login-or">
                   <span class="or-line"></span>
-                  <span class="span-or-log">Ou, connectez-vous avec votre e-mail</span>
-                </div>
-
-                <div class="social-login">
-                  <a
-                    href="#"
-                    class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
-                    ><span
-                      ><img
-                        src="assets/img/icons/google.svg"
-                        class="img-fluid"
-                        alt="Google" /></span
-                    >Connectez-vous avec Google</a
-                  >
+                  <span class="span-or">Ou, connectez-vous avec votre e-mail</span>
                 </div>
                 <div class="social-login">
-                  <a
-                    href="#"
-                    class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
-                    ><span
-                      ><img
-                        src="assets/img/icons/facebook.svg"
-                        class="img-fluid"
-                        alt="Facebook" /></span
-                    >Connectez-vous avec Facebook</a
-                  >
-                </div>
+  <a
+    href="#"
+    class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
+  >
+    <span>
+      <img
+        src="{{ asset('assets/img/icons/google.svg') }}"
+        class="img-fluid"
+        alt="Google"
+      />
+    </span>
+    Connectez-vous avec Google
+  </a>
+</div>
 
-                <div class="text-center dont-have">
-                  Vous n'avez pas encore de compte?
-                  <a href="{{ route('register') }}">S'inscrire</a>
-                </div>
+<div class="social-login">
+  <a
+    href="#"
+    class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100"
+  >
+    <span>
+      <img
+        src="{{ asset('assets/img/icons/facebook.svg') }}"
+        class="img-fluid"
+        alt="Facebook"
+      />
+    </span>
+    Connectez-vous avec Facebook
+  </a>
+</div>
+
+<div class="text-center dont-have">
+  Vous n'avez pas encore de compte ?
+  <a href="{{ route('register') }}">S'inscrire</a>
+</div>
+
               </form>
             </div>
           </div>
