@@ -8,21 +8,11 @@
 
                     <!-- Tableau de Bord -->
                     <li class="nav-item">
-                        <p class="navbar-vertical-label">Tableau de Bord</p>
                         <hr class="navbar-vertical-line">
                         <div class="nav-item-wrapper">
-                            <a class="nav-link dropdown-indicator label-1" href="#dashboard"
+                            <a class="nav-link dropdown-indicator label-1" href="{{route("home-admin")}}"
                                 role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
                                 <div class="d-flex align-items-center">
-                                    <div class="dropdown-indicator-icon-wrapper">
-                                        <svg class="svg-inline--fa fa-caret-right dropdown-indicator-icon" aria-hidden="true"
-                                            focusable="false" data-prefix="fas" data-icon="caret-right" role="img"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-                                            <path fill="currentColor"
-                                                d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z">
-                                            </path>
-                                        </svg>
-                                    </div>
                                     <span class="nav-link-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -82,6 +72,74 @@
                         </div>
                     </li>
 
+                     <!-- Gestion des vehicules -->
+                     <li class="nav-item">
+                        <p class="navbar-vertical-label">Gestion des vehicules</p>
+                        <hr class="navbar-vertical-line">
+                        <div class="nav-item-wrapper">
+                            <a
+                              class="nav-link dropdown-indicator label-1"
+                              href="#nv-email"
+                              role="button"
+                              data-bs-toggle="collapse"
+                              aria-expanded="false"
+                              aria-controls="nv-email"
+                            >
+                              <div class="d-flex align-items-center">
+                                <div class="dropdown-indicator-icon-wrapper">
+                                  <span
+                                    class="fas fa-caret-right dropdown-indicator-icon"
+                                  ></span>
+                                </div>
+                                <span class="nav-link-icon"
+                                  ><span data-feather="settings"></span></span
+                                ><span class="nav-link-text">Gestion des vehicules</span>
+                              </div>
+                            </a>
+                            <div class="parent-wrapper label-1">
+                              <ul
+                                class="nav collapse parent"
+                                data-bs-parent="#navbarVerticalCollapse"
+                                id="nv-email"
+                              >
+                                <li class="collapsed-nav-item-title d-none">Gestion des vehicules</li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="../apps/email/inbox.html">
+                                    <div class="d-flex align-items-center">
+                                      <span class="nav-link-text">Type de Véhicule</span>
+                                    </div> </a
+                                  ><!-- more inner pages-->
+                                </li>
+                                <li class="nav-item">
+                                  <a
+                                    class="nav-link"
+                                    href="{{route("makes.index")}}"
+                                  >
+                                    <div class="d-flex align-items-center">
+                                      <span class="nav-link-text">Marques</span>
+                                    </div> </a
+                                  ><!-- more inner pages-->
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="../apps/email/compose.html">
+                                    <div class="d-flex align-items-center">
+                                      <span class="nav-link-text">Type de Carburant</span>
+                                    </div> </a
+                                  ><!-- more inner pages-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../apps/email/compose.html">
+                                      <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">Vehicules</span>
+                                      </div> </a
+                                    ><!-- more inner pages-->
+                                  </li>
+                              </ul>
+                            </div>
+                          </div>
+                    </li>
+
+
                     <!-- Gestion des Clients -->
                     <li class="nav-item">
                         <p class="navbar-vertical-label">Gestion des Clients</p>
@@ -125,97 +183,7 @@
                         </div>
                     </li>
 
-                    <!-- Gestion des Véhicules -->
-                    <li class="nav-item">
-                        <p class="navbar-vertical-label">Gestion des Véhicules</p>
-                        <hr class="navbar-vertical-line">
-                        <div class="nav-item-wrapper">
-                            <a class="nav-link dropdown-indicator label-1" href="#vehicle-management"
-                                role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="vehicle-management">
-                                <div class="d-flex align-items-center">
-                                    <div class="dropdown-indicator-icon-wrapper">
-                                        <svg class="svg-inline--fa fa-caret-right dropdown-indicator-icon" aria-hidden="true"
-                                            focusable="false" data-prefix="fas" data-icon="caret-right" role="img"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-                                            <path fill="currentColor"
-                                                d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <span class="nav-link-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-truck">
-                                            <rect x="1" y="3" width="20" height="12" rx="2" ry="2"></rect>
-                                            <circle cx="6" cy="18" r="3"></circle>
-                                            <circle cx="18" cy="18" r="3"></circle>
-                                        </svg>
-                                    </span>
-                                    <span class="nav-link-text">Véhicules</span>
-                                </div>
-                            </a>
-                            <div class="parent-wrapper label-1">
-                                <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="vehicle-management">
-                                    <li class="nav-item"><a class="nav-link" href="add-vehicle-type.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Type de Véhicule</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-vehicle-type.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Type de Véhicule</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-brand.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Marque</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-brand.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Marque</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-reservation.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Réservation</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-reservation.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Réservation</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-payment.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Paiement</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-payment.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Paiement</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-payment-method.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Méthode de Paiement</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-payment-method.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Méthode de Paiement</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-notification.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Notification</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-notification.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Notification</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="add-fuel-type.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Type de Carburant</span></div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-fuel-type.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Type de Carburant</span></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+
 
                     <!-- Gestion des Rôles et Permissions -->
                     <li class="nav-item">
@@ -387,16 +355,11 @@
                             </a>
                             <div class="parent-wrapper label-1">
                                 <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="payment-management">
-                                    <li class="nav-item"><a class="nav-link" href="view-payments.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Visualiser Paiements</span></div>
-                                        </a>
-                                    </li>
                                     <li class="nav-item"><a class="nav-link" href="add-payment.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Paiement</span></div>
-                                        </a>
+                                        <div class="d-flex align-items-center"><span class="nav-link-text">Modes de paiement
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="edit-payment.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Modifier Paiement</span></div>
+                                    <li class="nav-item"><a class="nav-link" href="view-payments.html">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text">Liste des Paiements</span></div>
                                         </a>
                                     </li>
                                 </ul>
@@ -404,8 +367,6 @@
                         </div>
                     </li>
                 </ul>
-
-
             </ul>
         </div>
     </div>

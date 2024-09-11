@@ -3,7 +3,7 @@
 <div>
     <div class="row mb-4 mb-xl-6 mb-xxl-4 gy-3 justify-content-between">
       <div class="col-auto">
-        <h2 class="mb-0 text-body-emphasis">Travel Agency</h2>
+        <h2 class="mb-0 text-body-emphasis">Tableau de bord</h2>
       </div>
       <div class="col-auto">
         <div class="d-flex gap-3">
@@ -16,135 +16,228 @@
         </div>
       </div>
     </div>
+   <div class="card p-4">
     <div class="row gx-3">
-      <div class="col-xxl-7">
-        <div class="row gx-7 pe-xxl-3">
-          <div class="col-12 col-xl-5 col-xxl-12">
-            <div class="row g-0">
-              <div
-                class="col-6 col-xl-12 col-xxl-6 border-bottom border-end border-end-xl-0 border-end-xxl pb-4 pt-4 pt-xl-0 pt-xxl-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
-              >
-                <h5 class="text-body mb-4">Total Value</h5>
-                <div class="d-md-flex flex-between-center">
-                  <div
-                    class="echart-booking-value order-1 order-sm-0 order-md-1"
-                    style="height: 54px; width: 90px"
-                  ></div>
-                  <div class="mt-4 mt-md-0">
-                    <h3 class="text-body-highlight mb-2">$2,345.00</h3>
-                    <span
-                      class="badge badge-phoenix badge-phoenix-primary me-2 fs-10"
-                      ><span class="fa-solid fa-plus me-1"></span
-                      >23.35%</span
-                    ><span
-                      class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
-                      >From last month</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <div
-                class="col-6 col-xl-12 col-xxl-6 border-bottom py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
-              >
-                <h5 class="text-body mb-4">Booked Flights</h5>
-                <div class="d-md-flex flex-between-center">
-                  <div
-                    class="d-md-flex align-items-center gap-2 order-sm-0 order-md-1"
-                  >
-                    <span
-                      class="fa-solid fa-cloud-bolt fs-5 text-warning-light dark__text-opacity-75"
-                      data-bs-theme="light"
-                    ></span>
+        <div class="col-xxl-7">
+          <div class="row gx-7 pe-xxl-3">
+            <div class="col-12 col-xl-5 col-xxl-12">
+              <div class="row g-0">
+                <div
+                  class="col-6 col-xl-12 col-xxl-6 border-bottom border-end border-end-xl-0 border-end-xxl pb-4 pt-4 pt-xl-0 pt-xxl-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
+                >
+                  <h5 class="text-body mb-4">Total Value</h5>
+                  <div class="d-md-flex flex-between-center">
                     <div
-                      class="d-flex d-md-block gap-2 align-items-center mt-1 mt-md-0"
-                    >
-                      <p
-                        class="fs-9 mb-0 mb-md-2 text-body-tertiary text-nowrap"
+                      class="echart-booking-value order-1 order-sm-0 order-md-1"
+                      style="height: 54px; width: 90px"
+                    ></div>
+                    <div class="mt-4 mt-md-0">
+                      <h3 class="text-body-highlight mb-2">$2,345.00</h3>
+                      <span
+                        class="badge badge-phoenix badge-phoenix-primary me-2 fs-10"
+                        ><span class="fa-solid fa-plus me-1"></span
+                        >23.35%</span
+                      ><span
+                        class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
+                        >From last month</span
                       >
-                        Rain Chances
-                      </p>
-                      <h4 class="text-body-highlight mb-0">95%</h4>
                     </div>
                   </div>
-                  <div class="mt-3 mt-md-0">
-                    <h3 class="text-body-highlight mb-2">1,432</h3>
-                    <span
-                      class="badge badge-phoenix badge-phoenix-success me-2 fs-10"
-                      ><span class="fa-solid fa-plus me-1"></span
-                      >3.98%</span
-                    ><span
-                      class="fs-9 text-body-secondary text-nowrap d-block d-sm-inline mt-1"
-                      >From last month</span
+                </div>
+                <div
+                  class="col-6 col-xl-12 col-xxl-6 border-bottom py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
+                >
+                  <h5 class="text-body mb-4">Booked Flights</h5>
+                  <div class="d-md-flex flex-between-center">
+                    <div
+                      class="d-md-flex align-items-center gap-2 order-sm-0 order-md-1"
                     >
+                      <span
+                        class="fa-solid fa-cloud-bolt fs-5 text-warning-light dark__text-opacity-75"
+                        data-bs-theme="light"
+                      ></span>
+                      <div
+                        class="d-flex d-md-block gap-2 align-items-center mt-1 mt-md-0"
+                      >
+                        <p
+                          class="fs-9 mb-0 mb-md-2 text-body-tertiary text-nowrap"
+                        >
+                          Rain Chances
+                        </p>
+                        <h4 class="text-body-highlight mb-0">95%</h4>
+                      </div>
+                    </div>
+                    <div class="mt-3 mt-md-0">
+                      <h3 class="text-body-highlight mb-2">1,432</h3>
+                      <span
+                        class="badge badge-phoenix badge-phoenix-success me-2 fs-10"
+                        ><span class="fa-solid fa-plus me-1"></span
+                        >3.98%</span
+                      ><span
+                        class="fs-9 text-body-secondary text-nowrap d-block d-sm-inline mt-1"
+                        >From last month</span
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="col-6 col-xl-12 col-xxl-6 border-bottom-xl border-bottom-xxl-0 border-end border-end-xl-0 border-end-xxl py-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
-              >
-                <h5 class="text-body mb-4">Commission</h5>
-                <div class="d-md-flex flex-between-center">
-                  <div
-                    class="echart-commission order-sm-0 order-md-1"
-                    style="height: 54px; width: 54px"
-                  ></div>
-                  <div class="mt-3 mt-md-0">
-                    <h3 class="text-body-highlight mb-2">$3,339.00</h3>
-                    <span
-                      class="badge badge-phoenix badge-phoenix-danger me-2 fs-10"
-                      ><span class="fa-solid fa-minus me-1"></span
-                      >12.21%</span
-                    ><span
-                      class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
-                      >From last month</span
-                    >
+                <div
+                  class="col-6 col-xl-12 col-xxl-6 border-bottom-xl border-bottom-xxl-0 border-end border-end-xl-0 border-end-xxl py-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
+                >
+                  <h5 class="text-body mb-4">Commission</h5>
+                  <div class="d-md-flex flex-between-center">
+                    <div
+                      class="echart-commission order-sm-0 order-md-1"
+                      style="height: 54px; width: 54px"
+                    ></div>
+                    <div class="mt-3 mt-md-0">
+                      <h3 class="text-body-highlight mb-2">$3,339.00</h3>
+                      <span
+                        class="badge badge-phoenix badge-phoenix-danger me-2 fs-10"
+                        ><span class="fa-solid fa-minus me-1"></span
+                        >12.21%</span
+                      ><span
+                        class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
+                        >From last month</span
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="col-6 col-xl-12 col-xxl-6 py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
-              >
-                <h5 class="text-body mb-4">Canceled Booking</h5>
-                <div class="d-md-flex flex-between-center">
-                  <div
-                    class="chart-cancel-booking order-sm-0 order-md-1"
-                    style="height: 54px; width: 78px"
-                  ></div>
-                  <div class="mt-3 mt-md-0">
-                    <h3 class="text-body-highlight mb-2">120.00</h3>
-                    <span
-                      class="badge badge-phoenix badge-phoenix-danger me-2 fs-10"
-                      ><span class="fa-solid fa-plus me-1"></span
-                      >5.76%</span
-                    ><span
-                      class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
-                      >From last month</span
-                    >
+                <div
+                  class="col-6 col-xl-12 col-xxl-6 py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
+                >
+                  <h5 class="text-body mb-4">Canceled Booking</h5>
+                  <div class="d-md-flex flex-between-center">
+                    <div
+                      class="chart-cancel-booking order-sm-0 order-md-1"
+                      style="height: 54px; width: 78px"
+                    ></div>
+                    <div class="mt-3 mt-md-0">
+                      <h3 class="text-body-highlight mb-2">120.00</h3>
+                      <span
+                        class="badge badge-phoenix badge-phoenix-danger me-2 fs-10"
+                        ><span class="fa-solid fa-plus me-1"></span
+                        >5.76%</span
+                      ><span
+                        class="fs-9 text-body-secondary d-block d-sm-inline mt-1"
+                        >From last month</span
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12 col-xl-7 col-xxl-12">
-            <div class="mt-5 mt-xl-0 mt-xxl-5 mb-5 mb-xxl-0">
-              <div class="row flex-between-end gy-3 gx-2">
-                <div class="col-auto">
-                  <h3 class="text-body-highlight">Financial activities</h3>
-                  <p class="mb-0 text-body-tertiary">Yearly Balance</p>
+            <div class="col-12 col-xl-7 col-xxl-12">
+              <div class="mt-5 mt-xl-0 mt-xxl-5 mb-5 mb-xxl-0">
+                <div class="row flex-between-end gy-3 gx-2">
+                  <div class="col-auto">
+                    <h3 class="text-body-highlight">Financial activities</h3>
+                    <p class="mb-0 text-body-tertiary">Yearly Balance</p>
+                  </div>
+                  <div
+                    class="col-12 col-sm-auto ms-auto order-1 order-sm-0 order-md-1 order-lg-0 order-xxl-1"
+                  >
+                    <select
+                      class="form-select form-select-sm pe-9 w-auto"
+                      data-activities-options="data-activities-options"
+                    >
+                      <option value="0">Hotel</option>
+                      <option value="1">Flight</option>
+                      <option value="2">Trip</option>
+                    </select>
+                  </div>
+                  <div class="col-auto order-md-1 order-lg-0 order-xxl-1">
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-sm btn-phoenix-secondary bg-body-emphasis bg-body-hover action-btn"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-boundary="window"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-reference="parent"
+                      >
+                        <span
+                          class="fas fa-ellipsis-h"
+                          data-fa-transform="shrink-2"
+                        ></span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#">Action</a
+                        ><a class="dropdown-item" href="#">Another action</a
+                        ><a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-md-auto col-lg-12 col-xxl-auto mx-auto order-1 order-sm-0"
+                  >
+                    <div
+                      class="d-flex justify-content-center gap-6 gap-xxl-4"
+                    >
+                      <button
+                        class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
+                        id="profit"
+                      >
+                        <span
+                          class="bg-primary-light me-2"
+                          style="width: 16px; height: 6px; border-radius: 1px"
+                          data-bs-theme="light"
+                        ></span
+                        ><span class="text-body-secondary"
+                          >Profit</span
+                        ></button
+                      ><button
+                        class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
+                        id="revenue"
+                      >
+                        <span
+                          class="bg-success-light me-2"
+                          style="width: 16px; height: 6px; border-radius: 1px"
+                          data-bs-theme="light"
+                        ></span
+                        ><span class="text-body-secondary"
+                          >Revenue</span
+                        ></button
+                      ><button
+                        class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
+                        id="expanses"
+                      >
+                        <span
+                          class="bg-info-light me-2"
+                          style="width: 16px; height: 6px; border-radius: 1px"
+                          data-bs-theme="light"
+                        ></span
+                        ><span class="text-body-secondary">Expanses</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <div
-                  class="col-12 col-sm-auto ms-auto order-1 order-sm-0 order-md-1 order-lg-0 order-xxl-1"
+                  class="echart-financial-Activities"
+                  data-options='{"optionOne":"profit","optionTwo":"revenue","optionThree":"expanses"}'
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xxl-5">
+          <div class="row g-3">
+            <div class="col-12 col-md-6 col-xxl-12">
+              <div
+                class="card h-100"
+                data-list='{"valueNames":["country","users","status"],"page":4}'
+              >
+                <div
+                  class="card-header border-0 d-flex justify-content-between align-items-start"
                 >
-                  <select
-                    class="form-select form-select-sm pe-9 w-auto"
-                    data-activities-options="data-activities-options"
-                  >
-                    <option value="0">Hotel</option>
-                    <option value="1">Flight</option>
-                    <option value="2">Trip</option>
-                  </select>
-                </div>
-                <div class="col-auto order-md-1 order-lg-0 order-xxl-1">
+                  <div>
+                    <h3 class="text-body-highlight">Visitors</h3>
+                    <p class="mb-0 text-body-tertiary">
+                      Users across countries
+                    </p>
+                  </div>
                   <div class="dropdown">
                     <button
                       class="btn btn-sm btn-phoenix-secondary bg-body-emphasis bg-body-hover action-btn"
@@ -169,307 +262,216 @@
                     </div>
                   </div>
                 </div>
-                <div
-                  class="col-12 col-md-auto col-lg-12 col-xxl-auto mx-auto order-1 order-sm-0"
-                >
-                  <div
-                    class="d-flex justify-content-center gap-6 gap-xxl-4"
-                  >
-                    <button
-                      class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
-                      id="profit"
-                    >
-                      <span
-                        class="bg-primary-light me-2"
-                        style="width: 16px; height: 6px; border-radius: 1px"
-                        data-bs-theme="light"
-                      ></span
-                      ><span class="text-body-secondary"
-                        >Profit</span
-                      ></button
-                    ><button
-                      class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
-                      id="revenue"
-                    >
-                      <span
-                        class="bg-success-light me-2"
-                        style="width: 16px; height: 6px; border-radius: 1px"
-                        data-bs-theme="light"
-                      ></span
-                      ><span class="text-body-secondary"
-                        >Revenue</span
-                      ></button
-                    ><button
-                      class="btn d-flex align-items-center p-0 shadow-none fw-semibold"
-                      id="expanses"
-                    >
-                      <span
-                        class="bg-info-light me-2"
-                        style="width: 16px; height: 6px; border-radius: 1px"
-                        data-bs-theme="light"
-                      ></span
-                      ><span class="text-body-secondary">Expanses</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="echart-financial-Activities"
-                data-options='{"optionOne":"profit","optionTwo":"revenue","optionThree":"expanses"}'
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xxl-5">
-        <div class="row g-3">
-          <div class="col-12 col-md-6 col-xxl-12">
-            <div
-              class="card h-100"
-              data-list='{"valueNames":["country","users","status"],"page":4}'
-            >
-              <div
-                class="card-header border-0 d-flex justify-content-between align-items-start"
-              >
-                <div>
-                  <h3 class="text-body-highlight">Visitors</h3>
-                  <p class="mb-0 text-body-tertiary">
-                    Users across countries
-                  </p>
-                </div>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-sm btn-phoenix-secondary bg-body-emphasis bg-body-hover action-btn"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    data-boundary="window"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    data-bs-reference="parent"
+                <div class="card-body py-0">
+                  <h4
+                    class="d-flex align-items-center gap-2 text-body-highlight mb-3"
                   >
                     <span
-                      class="fas fa-ellipsis-h"
-                      data-fa-transform="shrink-2"
-                    ></span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">Action</a
-                    ><a class="dropdown-item" href="#">Another action</a
-                    ><a class="dropdown-item" href="#"
-                      >Something else here</a
-                    >
+                      class="real-time-user"
+                      data-countup='{"endValue":119}'
+                      >0</span
+                    ><span class="fs-9 fw-normal">User per second</span>
+                  </h4>
+                  <div
+                    class="echart-country-wise-visitors"
+                    style="height: 43px; width: 100%"
+                  ></div>
+                  <div class="table-responsive scrollbar mt-3">
+                    <table class="table fs-10 mb-0">
+                      <thead>
+                        <tr>
+                          <th
+                            class="sort ps-0 align-middle"
+                            data-sort="country"
+                            style="min-width: 100px"
+                          >
+                            COUNTRY NAME
+                          </th>
+                          <th
+                            class="sort align-middle"
+                            data-sort="users"
+                            style="min-width: 115px"
+                          >
+                            USERS
+                          </th>
+                          <th
+                            class="sort text-end align-middle"
+                            data-sort="status"
+                          >
+                            STATUS
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="list" id="table-country-wise-visitors">
+                        <tr>
+                          <td class="py-2 white-space-nowrap ps-0 country">
+                            <a
+                              class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
+                              href="#!"
+                              ><img
+                                src="../assets/img/country/india-2.png"
+                                alt=""
+                                width="40"
+                              />
+                              <p class="mb-0 ps-3 fw-bold fs-9">India</p>
+                            </a>
+                          </td>
+                          <td class="py-2 align-middle users">
+                            <h6>
+                              92,896<span
+                                class="text-body-tertiary fw-semibold ms-2"
+                                >(41.6%)</span
+                              >
+                            </h6>
+                          </td>
+                          <td class="py-2 align-middle text-end status">
+                            <span
+                              class="badge badge-phoenix fs-10 badge-phoenix-info"
+                              ><span class="fa-solid fa-plus me-1"></span
+                              >15.21%</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 white-space-nowrap ps-0 country">
+                            <a
+                              class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
+                              href="#!"
+                              ><img
+                                src="../assets/img/country/china-2.png"
+                                alt=""
+                                width="40"
+                              />
+                              <p class="mb-0 ps-3 fw-bold fs-9">China</p>
+                            </a>
+                          </td>
+                          <td class="py-2 align-middle users">
+                            <h6>
+                              50,496<span
+                                class="text-body-tertiary fw-semibold ms-2"
+                                >(32.8%)</span
+                              >
+                            </h6>
+                          </td>
+                          <td class="py-2 align-middle text-end status">
+                            <span
+                              class="badge badge-phoenix fs-10 badge-phoenix-warning"
+                              ><span class="fa-solid fa-plus me-1"></span
+                              >05.21%</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 white-space-nowrap ps-0 country">
+                            <a
+                              class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
+                              href="#!"
+                              ><img
+                                src="../assets/img/country/usa-2.png"
+                                alt=""
+                                width="40"
+                              />
+                              <p class="mb-0 ps-3 fw-bold fs-9">USA</p>
+                            </a>
+                          </td>
+                          <td class="py-2 align-middle users">
+                            <h6>
+                              45,679<span
+                                class="text-body-tertiary fw-semibold ms-2"
+                                >(24.3%)</span
+                              >
+                            </h6>
+                          </td>
+                          <td class="py-2 align-middle text-end status">
+                            <span
+                              class="badge badge-phoenix fs-10 badge-phoenix-primary"
+                              ><span class="fa-solid fa-plus me-1"></span
+                              >22.12%</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer pt-3 border-0">
+                  <div class="d-flex align-items-center">
+                    <div class="pagination d-none"></div>
+                    <p
+                      class="mb-0 d-none d-sm-block me-3 fw-semibold text-body"
+                      data-list-info="data-list-info"
+                    ></p>
+                    <a class="fw-bold fs-9 ms-auto" href="#!"
+                      >View all<span
+                        class="fas fa-angle-right ms-1"
+                        data-fa-transform="down-1"
+                      ></span
+                    ></a>
                   </div>
                 </div>
               </div>
-              <div class="card-body py-0">
-                <h4
-                  class="d-flex align-items-center gap-2 text-body-highlight mb-3"
-                >
-                  <span
-                    class="real-time-user"
-                    data-countup='{"endValue":119}'
-                    >0</span
-                  ><span class="fs-9 fw-normal">User per second</span>
-                </h4>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-12">
+              <div class="card h-100">
                 <div
-                  class="echart-country-wise-visitors"
-                  style="height: 43px; width: 100%"
-                ></div>
-                <div class="table-responsive scrollbar mt-3">
-                  <table class="table fs-10 mb-0">
-                    <thead>
-                      <tr>
-                        <th
-                          class="sort ps-0 align-middle"
-                          data-sort="country"
-                          style="min-width: 100px"
-                        >
-                          COUNTRY NAME
-                        </th>
-                        <th
-                          class="sort align-middle"
-                          data-sort="users"
-                          style="min-width: 115px"
-                        >
-                          USERS
-                        </th>
-                        <th
-                          class="sort text-end align-middle"
-                          data-sort="status"
-                        >
-                          STATUS
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="list" id="table-country-wise-visitors">
-                      <tr>
-                        <td class="py-2 white-space-nowrap ps-0 country">
-                          <a
-                            class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
-                            href="#!"
-                            ><img
-                              src="../assets/img/country/india-2.png"
-                              alt=""
-                              width="40"
-                            />
-                            <p class="mb-0 ps-3 fw-bold fs-9">India</p>
-                          </a>
-                        </td>
-                        <td class="py-2 align-middle users">
-                          <h6>
-                            92,896<span
-                              class="text-body-tertiary fw-semibold ms-2"
-                              >(41.6%)</span
-                            >
-                          </h6>
-                        </td>
-                        <td class="py-2 align-middle text-end status">
-                          <span
-                            class="badge badge-phoenix fs-10 badge-phoenix-info"
-                            ><span class="fa-solid fa-plus me-1"></span
-                            >15.21%</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-2 white-space-nowrap ps-0 country">
-                          <a
-                            class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
-                            href="#!"
-                            ><img
-                              src="../assets/img/country/china-2.png"
-                              alt=""
-                              width="40"
-                            />
-                            <p class="mb-0 ps-3 fw-bold fs-9">China</p>
-                          </a>
-                        </td>
-                        <td class="py-2 align-middle users">
-                          <h6>
-                            50,496<span
-                              class="text-body-tertiary fw-semibold ms-2"
-                              >(32.8%)</span
-                            >
-                          </h6>
-                        </td>
-                        <td class="py-2 align-middle text-end status">
-                          <span
-                            class="badge badge-phoenix fs-10 badge-phoenix-warning"
-                            ><span class="fa-solid fa-plus me-1"></span
-                            >05.21%</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-2 white-space-nowrap ps-0 country">
-                          <a
-                            class="d-flex align-items-center text-primary py-md-1 py-xxl-0"
-                            href="#!"
-                            ><img
-                              src="../assets/img/country/usa-2.png"
-                              alt=""
-                              width="40"
-                            />
-                            <p class="mb-0 ps-3 fw-bold fs-9">USA</p>
-                          </a>
-                        </td>
-                        <td class="py-2 align-middle users">
-                          <h6>
-                            45,679<span
-                              class="text-body-tertiary fw-semibold ms-2"
-                              >(24.3%)</span
-                            >
-                          </h6>
-                        </td>
-                        <td class="py-2 align-middle text-end status">
-                          <span
-                            class="badge badge-phoenix fs-10 badge-phoenix-primary"
-                            ><span class="fa-solid fa-plus me-1"></span
-                            >22.12%</span
-                          >
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="card-footer pt-3 border-0">
-                <div class="d-flex align-items-center">
-                  <div class="pagination d-none"></div>
-                  <p
-                    class="mb-0 d-none d-sm-block me-3 fw-semibold text-body"
-                    data-list-info="data-list-info"
-                  ></p>
-                  <a class="fw-bold fs-9 ms-auto" href="#!"
-                    >View all<span
-                      class="fas fa-angle-right ms-1"
-                      data-fa-transform="down-1"
-                    ></span
+                  class="card-header border-0 pb-2 d-flex justify-content-between align-items-start"
+                >
+                  <div>
+                    <h3 class="text-body-highlight">Holidays</h3>
+                    <p class="mb-sm-0 text-body-tertiary">
+                      Holidays next month
+                    </p>
+                  </div>
+                  <a
+                    class="btn btn-sm btn-phoenix-secondary d-flex align-items-center w-max-content"
+                    href="#!"
+                    ><span class="text-nowrap">Calender</span
+                    ><span class="fa-solid fa-chevron-right ms-2 fs-10"></span
                   ></a>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xxl-12">
-            <div class="card h-100">
-              <div
-                class="card-header border-0 pb-2 d-flex justify-content-between align-items-start"
-              >
-                <div>
-                  <h3 class="text-body-highlight">Holidays</h3>
-                  <p class="mb-sm-0 text-body-tertiary">
-                    Holidays next month
-                  </p>
+                <div class="card-body">
+                  <div
+                    class="echart-holidays-next-month"
+                    style="height: 100%; min-height: 300px; width: 100%"
+                  ></div>
                 </div>
-                <a
-                  class="btn btn-sm btn-phoenix-secondary d-flex align-items-center w-max-content"
-                  href="#!"
-                  ><span class="text-nowrap">Calender</span
-                  ><span class="fa-solid fa-chevron-right ms-2 fs-10"></span
-                ></a>
-              </div>
-              <div class="card-body">
-                <div
-                  class="echart-holidays-next-month"
-                  style="height: 100%; min-height: 300px; width: 100%"
-                ></div>
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="card mb-3">
-              <div
-                class="bg-holder bg-card"
-                style="
-                  background-image: url(../assets/img/spot-illustrations/39.png);
-                  background-position: bottom right 0px;
-                  background-size: auto;
-                "
-              ></div>
-              <!--/.bg-holder-->
-              <div class="card-body z-5">
-                <div>
-                  <h3 class="text-body-highlight mb-3">
-                    Phoenix integrations
-                  </h3>
-                  <p class="text-body-tertiary mb-4 w-75 w-xl-100">
-                    Phoenix improves efficiency instantly and effortlessly
-                    <br class="d-none d-xxl-block" />
-                    by allowing easy & simple connection
-                    <br class="d-none d-xl-block" />
-                    to other popular programs
-                  </p>
-                  <a class="btn btn-sm btn-phoenix-primary" href="#!">
-                    <span class="fa-solid fa-link me-1"> </span>Connect
-                    Now</a
-                  >
+            <div class="col-12">
+              <div class="card mb-3">
+                <div
+                  class="bg-holder bg-card"
+                  style="
+                    background-image: url(../assets/img/spot-illustrations/39.png);
+                    background-position: bottom right 0px;
+                    background-size: auto;
+                  "
+                ></div>
+                <!--/.bg-holder-->
+                <div class="card-body z-5">
+                  <div>
+                    <h3 class="text-body-highlight mb-3">
+                      Phoenix integrations
+                    </h3>
+                    <p class="text-body-tertiary mb-4 w-75 w-xl-100">
+                      Phoenix improves efficiency instantly and effortlessly
+                      <br class="d-none d-xxl-block" />
+                      by allowing easy & simple connection
+                      <br class="d-none d-xl-block" />
+                      to other popular programs
+                    </p>
+                    <a class="btn btn-sm btn-phoenix-primary" href="#!">
+                      <span class="fa-solid fa-link me-1"> </span>Connect
+                      Now</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+   </div>
     <div class="row g-3 mb-5">
       <div class="col-xl-5 col-xxl-7">
         <div class="card h-xxl-100">

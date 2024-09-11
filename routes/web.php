@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MakeController;
+
 Route::get('/', [HomeController::class,'index'])->name('home');
 // Contact
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
@@ -18,6 +20,8 @@ Route::get('/listing', [HomeController::class, 'listing'])->name('listing');
 
 // Offres spéciales
 Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
+
+Route::resource('makes', MakeController::class);
 
 //route pour l'authentication
 Route::group(['prefix' => 'auth'], function () {
