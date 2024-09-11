@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MakeController;
+use App\Http\Controllers\UserController;
+
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 // Contact
@@ -22,6 +24,7 @@ Route::get('/listing', [HomeController::class, 'listing'])->name('listing');
 Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 
 Route::resource('makes', MakeController::class);
+Route::resource('users', UserController::class);
 
 //route pour l'authentication
 Route::group(['prefix' => 'auth'], function () {
