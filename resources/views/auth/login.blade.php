@@ -48,83 +48,87 @@
               <p class="account-subtitle">
                 Nous vous enverrons un code de confirmation par e-mail.
               </p>
-              <form action="index.html" method="POST">
-                <div class="mb-3">
-                  <label class="form-label" for="basic-form-email"
-                    >E-mail <span class="text-danger">*</span></label
-                  >
-                  <input type="email" class="form-control" id="basic-form-email"  placeholder="" />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="basic-form-password"
-                    >Mot de passe <span class="text-danger">*</span></label
-                  >
-                  <div class="pass-group">
-                    <input
-                      type="password"
-                      class="form-control pass-input" id="basic-form-password"
-                      placeholder=""
-                    />
-                    <span class="fas fa-eye-slash toggle-password"></span>
-                  </div>
-                </div>
-                <div class="input-block">
-                  <a class="forgot-link" href="forgot-password.html"
-                    >Mot de passe oublié ?</a
-                  >
-                </div>
-                <div class="input-block m-0">
-                  <label class="custom_check d-inline-flex"
-                    ><span>Se souvenir de moi</span>
-                    <input type="checkbox" name="remeber" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <a
-                  href="index.html"
-                  class="btn btn-outline-light w-100 btn-size mt-1"
-                  >Se connecter</a
-                >
-                <div class="login-or">
-                  <span class="or-line"></span>
-                  <span class="span-or">Ou, connectez-vous avec votre e-mail</span>
-                </div>
-                <div class="social-login">
-  <a
-    href="#"
-    class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
-  >
-    <span>
-      <img
-        src="{{ asset('assets/img/icons/google.svg') }}"
-        class="img-fluid"
-        alt="Google"
-      />
-    </span>
-    Connectez-vous avec Google
-  </a>
-</div>
+              <form action="{{ route('home-admin') }}" method="POST" >
+               @csrf
+                {{-- @error('email')
 
-<div class="social-login">
-  <a
-    href="#"
-    class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100"
-  >
-    <span>
-      <img
-        src="{{ asset('assets/img/icons/facebook.svg') }}"
-        class="img-fluid"
-        alt="Facebook"
-      />
-    </span>
-    Connectez-vous avec Facebook
-  </a>
-</div>
+                @enderror --}}
+                    <div class="mb-3">
+                    <label class="form-label" for="basic-form-email"
+                        >E-mail <span class="text-danger">*</span></label
+                    >
+                    <input type="email" class="form-control" id="basic-form-email"  placeholder="" />
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label" for="basic-form-password"
+                        >Mot de passe <span class="text-danger">*</span></label
+                    >
+                    <div class="pass-group">
+                        <input
+                        type="password"
+                        class="form-control pass-input" id="basic-form-password"
+                        placeholder=""
+                        />
+                        <span class="fas fa-eye-slash toggle-password"></span>
+                    </div>
+                    </div>
+                    <div class="input-block">
+                    <a class="forgot-link" href="forgot-password.html"
+                        >Mot de passe oublié ?</a
+                    >
+                    </div>
+                    <div class="input-block m-0">
+                    <label class="custom_check d-inline-flex"
+                        ><span>Se souvenir de moi</span>
+                        <input type="checkbox" name="remeber" />
+                        <span class="checkmark"></span>
+                    </label>
+                    </div>
+                    <a
+                    href="index.html"
+                    class="btn btn-outline-light w-100 btn-size mt-1"
+                    >Se connecter</a
+                    >
+                    <div class="login-or">
+                    <span class="or-line"></span>
+                    <span class="span-or">Ou, connectez-vous avec votre e-mail</span>
+                    </div>
+                    <div class="social-login">
+                        <a
+                            href="#"
+                            class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
+                        >
+                            <span>
+                            <img
+                                src="{{ asset('assets/img/icons/google.svg') }}"
+                                class="img-fluid"
+                                alt="Google"
+                            />
+                            </span>
+                            Connectez-vous avec Google
+                        </a>
+                        </div>
 
-<div class="text-center dont-have">
-  Vous n'avez pas encore de compte ?
-  <a href="{{ route('register') }}">S'inscrire</a>
-</div>
+                        <div class="social-login">
+                        <a
+                            href="#"
+                            class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100"
+                        >
+                            <span>
+                            <img
+                                src="{{ asset('assets/img/icons/facebook.svg') }}"
+                                class="img-fluid"
+                                alt="Facebook"
+                            />
+                            </span>
+                            Connectez-vous avec Facebook
+                        </a>
+                        </div>
+
+                        <div class="text-center dont-have">
+                        Vous n'avez pas encore de compte ?
+                        <a href="{{ route('register') }}">S'inscrire</a>
+                        </div>
 
               </form>
             </div>
