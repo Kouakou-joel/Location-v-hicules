@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Inscription - Dreams Rent</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}" />
@@ -11,6 +12,13 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/feather.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+
+    {{-- <style>
+        .is-invalid{
+            color: red!important;
+        }
+    </style> --}}
+
   </head>
   <body>
     <div class="main-wrapper login-body">
@@ -40,25 +48,25 @@
                   <label class="form-label" for="name">Nom d'utilisateur <span class="text-danger">*</span></label>
                   <input type="text" name="name" class="form-control mb-3 @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="" required />
                   @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="email">E-mail <span class="text-danger">*</span></label>
-                  <input type="email" name="email" class="form-control mb-3 @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" placeholder="" autocomplete="email" required />
+                  <input type="email" id="email" class="form-control pass-input mb-3 @error('password') is-invalid @enderror"  id="email" data-url-email-exist="{{ route('email.exist') }}" data-token="{{ csrf_token() }}" autocomplete="email" autofocus />
+
                   @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    
                   @enderror
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="password">Mot de passe <span class="text-danger">*</span></label>
                   <div class="pass-group">
-                    <input type="password" name="password" class="form-control pass-input mb-3 @error('password') is-invalid @enderror" id="basic-form-password" placeholder="" autofocus required />
+                    <input type="password" name="password" class="form-control pass-input mb-3 @error('password') is-invalid @enderror" id="password" placeholder="" autofocus required />
                     <span class="fas fa-eye-slash toggle-password"></span>
                     @error('password')
-                      <div class="invalid-feedback">{{ $message }}</div>
+                      
                     @enderror
                   </div>
                 </div>
@@ -67,8 +75,23 @@
                   <label class="form-label" for="confirm-password">Confirmation du mot de passe <span class="text-danger">*</span></label>
                   <input type="password" class="form-control mb-3 @error('confirm_password') is-invalid @enderror" name="confirm_password" id="confirm-password" placeholder="" required />
                   @error('confirm_password')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    
                   @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="pieces">Numero pieces (identité ou permis) <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control mb-3 @error('pieces') is-invalid @enderror" name="pieces" id="pieces" placeholder="" required />
+                    @error('pieces')
+                      
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="telephone">Telephone<span class="text-danger">*</span></label>
+                    <input type="telephone" class="form-control mb-3 @error('telephone') is-invalid @enderror" name="telephone" id="telephone" placeholder="" required />
+                    @error('telephone')
+                      
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -80,7 +103,7 @@
                   </div>
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" id="flexRadioDefault1" type="radio" name="account_type" value="personal" required />
                     <label class="form-check-label" for="flexRadioDefault1">Compte Personnel</label>
@@ -89,9 +112,9 @@
                     <input class="form-check-input" id="flexRadioDefault2" type="radio" name="account_type" value="professional" required />
                     <label class="form-check-label" for="flexRadioDefault2">Compte Professionnel</label>
                   </div>
-                </div>
+                </div> --}}
 
-                <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">S'inscrire</button>
+                <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1" id="register-user" >S'inscrire</button>
 
                 <div class="login-or">
                   <span class="or-line"></span>
@@ -99,14 +122,14 @@
                 </div>
 
                 <div class="social-login">
-                  <a href="#" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
+                  <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
                     <span><img src="{{ asset('assets/img/icons/google.svg') }}" class="img-fluid" alt="Google" /></span>
                     Connectez-vous avec Google
                   </a>
                 </div>
 
                 <div class="social-login">
-                  <a href="#" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
+                  <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
                     <span><img src="{{ asset('assets/img/icons/facebook.svg') }}" class="img-fluid" alt="Facebook" /></span>
                     Connectez-vous avec Facebook
                   </a>
@@ -134,5 +157,6 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('admin/assets/main/user/user.js') }}"></script>
+
   </body>
 </html>

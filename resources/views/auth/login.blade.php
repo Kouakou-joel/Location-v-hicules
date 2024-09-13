@@ -95,7 +95,7 @@
                     </div>
                     <div class="social-login">
                         <a
-                            href="#"
+                            href="{{ route('home-admin') }}"
                             class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
                         >
                             <span>
@@ -111,7 +111,7 @@
 
                         <div class="social-login">
                         <a
-                            href="#"
+                            href="{{ route('home-admin') }}"
                             class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100"
                         >
                             <span>

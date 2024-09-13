@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
 return [
@@ -73,7 +74,7 @@ return [
     |
     */
 
-    'home' => '/home',
+    'home' => RouteServiceProvider::HOME,  // Assurez-vous que HOME est bien défini dans RouteServiceProvider
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +147,7 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
+        // Décommenter la ligne ci-dessous pour activer la vérification par email
         // Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),

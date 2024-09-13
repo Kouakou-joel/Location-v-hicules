@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash; // Ajout pour le hashage des mots de passe
+
 class UserController extends Controller
 {
     /**
@@ -17,54 +19,63 @@ class UserController extends Controller
     }
 
     /**
+     * Vérifier si un email existe déjà dans la base de données.
+     */
+    public function checkEmail(Request $request)
+    {
+        // Vérifiez si l'email existe dans la base de données
+        $emailExists = User::where('email', $request->email)->exists();
+
+        // Retournez une réponse JSON indiquant si l'email existe ou non
+        return response()->json([
+            'response' => $emailExists ? 'exist' : 'not_exist',
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
         return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-     // Enregistrer un nouvel utilisateur
-     public function store(Request $request)
-     {
-         $request->validate([
-             'name' => 'required|string|max:255',
-             'email' => 'required|string|email|max:191|unique:users',
-             'password' => 'required|string|min:8|confirmed',
-             'pieces_identite_permis' => 'required|string',
-             'phone' => 'required|string',
-         ]);
- 
-         User::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'password' => Hash::make($request->password),
-             'pieces_identite_permis' => $request->pieces_identite_permis,
-             'phone' => $request->phone,
-         ]);
- 
-         return redirect()->route('users.index')->with('success', 'User created successfully.');
-     }
+    // Enregistrer un nouvel utilisateur
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:191|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'pieces_identite_permis' => 'required|string',
+            'phone' => 'required|string',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Hash du mot de passe
+            'pieces_identite_permis' => $request->pieces_identite_permis,
+            'phone' => $request->phone,
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
+    }
 
     /**
      * Display the specified resource.
      */
-    // Afficher un utilisateur spécifique
     public function show(User $user)
     {
         return view('users.show', compact('user'));
     }
 
-   
-
     /**
      * Show the form for editing the specified resource.
      */
-    // Afficher le formulaire d'édition
     public function edit(User $user)
     {
         return view('users.edit', compact('user'));
@@ -73,7 +84,6 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // Mettre à jour les informations de l'utilisateur
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -99,11 +109,9 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 
-
     /**
      * Remove the specified resource from storage.
      */
-    // Supprimer un utilisateur
     public function destroy(User $user)
     {
         $user->delete();
