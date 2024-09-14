@@ -9,8 +9,8 @@ $(document).ready(function() {
         var password = $('#password').val();
         var confirm_password = $('#confirm-password').val();
         var passwordLength = password.length;
-        var pieces = $('#pieces').val();
-        var phone = $('#telephone').val();
+        var pieces = $('#pieces_identite_permis').val();
+        var phone = $('#phone').val();
         var agreeterms = $('#agreeterms').prop('checked');
 
         // Vérification du nom utilisateur
@@ -30,7 +30,7 @@ $(document).ready(function() {
         }
 
         // Vérification du mot de passe
-        if (passwordLength >= 8) {
+        if (passwordLength >= 4) {
             $('#password').removeClass('is-invalid').addClass('is-valid');
 
             // Vérification de la confirmation du mot de passe
@@ -49,17 +49,17 @@ $(document).ready(function() {
 
         // Vérification de la pièce
         if (pieces) {
-            $('#pieces').removeClass('is-invalid').addClass('is-valid');
+            $('#pieces_identite_permis').removeClass('is-invalid').addClass('is-valid');
         } else {
-            $('#pieces').addClass('is-invalid').removeClass('is-valid');
+            $('#pieces_identite_permis').addClass('is-invalid').removeClass('is-valid');
             isValid = false;
         }
 
         // Vérification du numéro de téléphone
         if (phone) {
-            $('#telephone').removeClass('is-invalid').addClass('is-valid');
+            $('#phone').removeClass('is-invalid').addClass('is-valid');
         } else {
-            $('#telephone').addClass('is-invalid').removeClass('is-valid');
+            $('#phone').addClass('is-invalid').removeClass('is-valid');
             isValid = false;
         }
 
@@ -97,6 +97,7 @@ $(document).ready(function() {
     });
 
     // Fonction de vérification de l'existence de l'email via AJAX
+
     function emailExistjs(email) {
         var url = $('#email').data('url-email-exist'); // Récupérer l'URL correctement via data attribute
         var token = $('#email').data('token'); // Récupérer le token via data attribute
@@ -110,10 +111,12 @@ $(document).ready(function() {
             data: { email: email },
             dataType: 'json'
         }).then(function(result) {
-            return result.response; // Retourner la réponse sous forme de promesse
+            return result.response === 'exist';  // Ajuste la condition ici
         }).catch(function(error) {
             console.error('Erreur AJAX :', error);
-            return "error";
+            return false;  // Retourne false si une erreur survient
         });
-    }
+    };    
+
+      
 });

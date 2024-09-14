@@ -18,7 +18,7 @@ class CreateNewUser implements CreatesNewUsers
      * @param  array<string, string>  $input
      * @return \App\Models\User
      */
-    public function create(array $input): User
+    public function create(array $input)
     {
         // Valider les données avant de créer un nouvel utilisateur
         Validator::make($input, [
@@ -36,12 +36,14 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         // Créer et retourner le nouvel utilisateur
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-            'pieces_identite_permis' => $input['pieces_identite_permis'], // Correction de l'espace en trop
-            'phone' => $input['phone'],
-        ]);
+        // return User::create([
+        //     'name' => $input['name'],
+        //     'email' => $input['email'],
+        //     'password' => Hash::make($input['password']),
+        //     'pieces_identite_permis' => $input['pieces_identite_permis'], // Correction de l'espace en trop
+        //     'phone' => $input['phone'],
+        // ]);
+
+        return [];
     }
 }

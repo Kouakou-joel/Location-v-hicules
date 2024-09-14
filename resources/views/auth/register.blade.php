@@ -42,21 +42,21 @@
               <p class="account-subtitle">
                 Nous vous enverrons un code de confirmation par e-mail.
               </p>
-              <form action="{{ route('home-admin') }}" method="POST" id="form-register">
+              <form action="{{ route('register-user') }}" method="POST" id="form-register">
                 @csrf
                 <div class="mb-3">
                   <label class="form-label" for="name">Nom d'utilisateur <span class="text-danger">*</span></label>
-                  <input type="text" name="name" class="form-control mb-3 @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="" required />
+                  <input type="text" name="name" class="form-control mb-3 @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="" required autofocus    />
                   @error('name')
                   @enderror
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="email">E-mail <span class="text-danger">*</span></label>
-                  <input type="email" id="email" class="form-control pass-input mb-3 @error('password') is-invalid @enderror"  id="email" data-url-email-exist="{{ route('email.exist') }}" data-token="{{ csrf_token() }}" autocomplete="email" autofocus />
+                  <input type="email" class="form-control pass-input mb-3 @error('email') is-invalid @enderror" name="email"  id="email" data-url-email-exist="{{ route('email.exist') }}" data-token="{{ csrf_token() }}" autocomplete="email"  />
 
                   @error('email')
-                    
+       
                   @enderror
                 </div>
 
@@ -66,7 +66,7 @@
                     <input type="password" name="password" class="form-control pass-input mb-3 @error('password') is-invalid @enderror" id="password" placeholder="" autofocus required />
                     <span class="fas fa-eye-slash toggle-password"></span>
                     @error('password')
-                      
+                      Mot de passe invalid
                     @enderror
                   </div>
                 </div>
@@ -80,16 +80,16 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="pieces">Numero pieces (identité ou permis) <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control mb-3 @error('pieces') is-invalid @enderror" name="pieces" id="pieces" placeholder="" required />
+                    <label class="form-label" for="pieces_identite_permis">Numero pieces (identité ou permis) <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control mb-3 @error('pieces') is-invalid @enderror" name="pieces_identite_permis" id="pieces_identite_permis" placeholder="" required />
                     @error('pieces')
                       
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="telephone">Telephone<span class="text-danger">*</span></label>
-                    <input type="telephone" class="form-control mb-3 @error('telephone') is-invalid @enderror" name="telephone" id="telephone" placeholder="" required />
-                    @error('telephone')
+                    <label class="form-label" for="phone">Telephone<span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control mb-3 @error('phone') is-invalid @enderror" name="phone" id="phone" placeholder="" required />
+                    @error('phone')
                       
                     @enderror
                 </div>

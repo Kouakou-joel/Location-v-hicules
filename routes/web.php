@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\UserController;
 
@@ -26,15 +27,18 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
 
-// // routes/web.php
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 
+
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
 
 //route pour l'authentication
 Route::group(['prefix' => 'auth'], function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('post-login', [AuthController::class, 'postLogin'])->name('post-login');
 });
 
 //route pour l'admin

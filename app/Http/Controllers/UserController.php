@@ -18,20 +18,16 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+
     /**
      * Vérifier si un email existe déjà dans la base de données.
      */
     public function checkEmail(Request $request)
     {
-        // Vérifiez si l'email existe dans la base de données
         $emailExists = User::where('email', $request->email)->exists();
-
-        // Retournez une réponse JSON indiquant si l'email existe ou non
-        return response()->json([
-            'response' => $emailExists ? 'exist' : 'not_exist',
-        ]);
+        return response()->json(['response' => $emailExists ? 'exist' : 'not-exist']);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -44,7 +40,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     // Enregistrer un nouvel utilisateur
-    public function store(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -57,7 +53,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Hash du mot de passe
+            'password' => Hash::make($request->password), 
             'pieces_identite_permis' => $request->pieces_identite_permis,
             'phone' => $request->phone,
         ]);
