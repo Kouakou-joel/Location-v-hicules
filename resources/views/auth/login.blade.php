@@ -10,18 +10,14 @@
 
     <link rel="shortcut icon" href="assets/img/favicon.png" />
 
+    <!-- Liens vers les fichiers CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link
-      rel="stylesheet"
-      href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}"
-    />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/feather.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
   </head>
+
   <body>
     <div class="main-wrapper login-body">
       <header class="log-header">
@@ -29,6 +25,7 @@
           <img class="img-fluid logo-dark" src="{{ asset('assets/img/logo.svg') }}" alt="Logo" />
         </a>
       </header>
+      
       <div class="login-wrapper">
         <div class="loginbox">
           <div class="login-auth">
@@ -40,39 +37,41 @@
                 </a>
               </div>
 
-              <div>
-                @if(session('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ session('error') }}
-                </div>
-                @endif
-              </div>
+              <!-- Affichage des erreurs -->
+              @if(session('error'))
+                <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+              @endif
+
               <h1>Connexion</h1>
               <p class="account-subtitle">
                 Nous vous enverrons un code de confirmation par e-mail.
               </p>
+
+              <!-- Formulaire de connexion -->
               <form action="{{ route('post-login') }}" method="POST" id="form-register">
                 @csrf
+                
                 <div class="mb-3">
-                  <label class="form-label" for="basic-form-email">
+                  <label class="form-label" for="form-email">
                     E-mail <span class="text-danger">*</span>
                   </label>
-                  <input type="email" class="form-control" id="basic-form-email" name="email" value="{{ old('email') }}" placeholder="Votre adresse e-mail" required/>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="form-email" name="email"  value="{{ old('email') }}"  autocomplete="email"  required autofocus aria-describedby="emailHelp" />
                   @error('email')
-                    <div class="text-danger">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label" for="basic-form-password">
+                  <label class="form-label" for="form-password">
                     Mot de passe <span class="text-danger">*</span>
                   </label>
                   <div class="pass-group">
-                    <input type="password" class="form-control pass-input" id="basic-form-password" name="password"  placeholder="Votre mot de passe" required />
+                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" id="form-password" name="password" autocomplete="current-password" required/>
                     <span class="fas fa-eye-slash toggle-password"></span>
+                    @error('password')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
-                  @error('password')
-                  @enderror
                 </div>
 
                 <div class="input-block">
@@ -87,47 +86,35 @@
                   </label>
                 </div>
 
-                <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">
+                <button type="submit" class="btn btn-primary w-100 btn-size mt-1">
                   Se connecter
                 </button>
 
-                {{-- <div class="login-or">
+                <div class="login-or">
                   <span class="or-line"></span>
                   <span class="span-or">Ou, connectez-vous avec votre e-mail</span>
                 </div>
 
                 <div class="social-login">
-                  <a
-                    href="{{ route('home-admin') }}"
-                    class="d-flex align-items-center justify-content-center input-block btn google-login w-100"
-                  >
+                  <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
                     <span>
-                      <img
-                        src="{{ asset('assets/img/icons/google.svg') }}"
-                        class="img-fluid" alt="Google" />
+                      <img src="{{ asset('assets/img/icons/google.svg') }}" class="img-fluid" alt="Google" />
                     </span>
                     Connectez-vous avec Google
                   </a>
                 </div>
 
                 <div class="social-login">
-                  <a
-                    href="{{ route('home-admin') }}"
-                    class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100"
-                  >
+                  <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn facebook-login w-100">
                     <span>
-                      <img
-                        src="{{ asset('assets/img/icons/facebook.svg') }}"
-                        class="img-fluid"
-                        alt="Facebook"
-                      />
+                      <img src="{{ asset('assets/img/icons/facebook.svg') }}" class="img-fluid" alt="Facebook" />
                     </span>
                     Connectez-vous avec Facebook
                   </a>
-                </div> --}}
+                </div>
 
                 <div class="text-center dont-have">
-                  Vous n'avez pas encore de compte ?
+                  Vous n'avez pas encore de compte ? 
                   <a href="{{ route('register') }}">S'inscrire</a>
                 </div>
               </form>
@@ -147,6 +134,7 @@
       </footer>
     </div>
 
+    <!-- Fichiers JS -->
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>

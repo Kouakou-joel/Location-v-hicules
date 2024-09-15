@@ -51,6 +51,7 @@ Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
     Route::put('profile/update', [UserController::class, 'updateProfile'])->name('customer.profile.update');
     Route::get('reservations', [UserController::class, 'showReservations'])->name('customer.reservations');
     Route::post('/check-email', [UserController::class, 'checkEmail'])->name('email.exist');
+    Route::post('/check-pieces', [UserController::class, 'checkPieces'])->name('pieces.exist');
 
     // Ajoutez d'autres routes pour les fonctionnalités client ici
 

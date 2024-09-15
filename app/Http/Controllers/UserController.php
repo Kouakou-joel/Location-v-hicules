@@ -28,6 +28,11 @@ class UserController extends Controller
         return response()->json(['response' => $emailExists ? 'exist' : 'not-exist']);
     }
     
+    public function checkPieces(Request $request)
+    {
+        $piecesExists = User::where('pieces_identite_permis', $request->pieces)->exists();
+        return response()->json(['response' => $piecesExists ? 'exist' : 'not-exist']);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -41,25 +46,42 @@ class UserController extends Controller
      */
     // Enregistrer un nouvel utilisateur
     public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:191|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'pieces_identite_permis' => 'required|string',
-            'phone' => 'required|string',
-        ]);
+{
+    // Validation des données entrantes
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:191|unique:users',
+        'password' => 'required|string|min:4',
+        'pieces_identite_permis' => 'required|string',
+        'phone' => 'required|string',
+    ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password), 
-            'pieces_identite_permis' => $request->pieces_identite_permis,
-            'phone' => $request->phone,
-        ]);
+    // Génération d'un token d'activation unique à partir de l'email
+    $email = $request->email; 
+    $activation_token = md5(uniqid()) . $email . sha1($email);
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+    // Génération du code d'activation à 5 chiffres
+    $activation_code = "";
+    $length_code = 5;
+    for ($i = 0; $i < $length_code; $i++) {
+        $activation_code .= mt_rand(0, 9);
     }
+
+    // Création de l'utilisateur dans la base de données
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'pieces_identite_permis' => $request->pieces_identite_permis,
+        'phone' => $request->phone,
+        'activation_token' => $activation_token, 
+        'activation_code' => $activation_code,   
+    ]);
+
+    // Redirection avec un message de succès
+    return redirect()->route('users.index')->with('success', 'Utilisateur créé avec succès.');
+}
+
 
     /**
      * Display the specified resource.

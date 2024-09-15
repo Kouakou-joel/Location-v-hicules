@@ -46,7 +46,7 @@
                 @csrf
                 <div class="mb-3">
                   <label class="form-label" for="name">Nom d'utilisateur <span class="text-danger">*</span></label>
-                  <input type="text" name="name" class="form-control mb-3 @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="" required autofocus    />
+                    <input type="text" name="name" class="form-control mb-3 @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="" required autofocus    />
                   @error('name')
                   @enderror
                 </div>
@@ -63,7 +63,7 @@
                 <div class="mb-3">
                   <label class="form-label" for="password">Mot de passe <span class="text-danger">*</span></label>
                   <div class="pass-group">
-                    <input type="password" name="password" class="form-control pass-input mb-3 @error('password') is-invalid @enderror" id="password" placeholder="" autofocus required />
+                    <input type="password" name="password" class="form-control pass-input mb-3 @error('password') is-invalid @enderror" id="password"  autofocus required />
                     <span class="fas fa-eye-slash toggle-password"></span>
                     @error('password')
                       Mot de passe invalid
@@ -73,7 +73,7 @@
 
                 <div class="mb-3">
                   <label class="form-label" for="confirm-password">Confirmation du mot de passe <span class="text-danger">*</span></label>
-                  <input type="password" class="form-control mb-3 @error('confirm_password') is-invalid @enderror" name="confirm_password" id="confirm-password" placeholder="" required />
+                  <input type="password" class="form-control mb-3 @error('confirm_password') is-invalid @enderror" name="confirm_password" id="confirm-password"  required />
                   @error('confirm_password')
                     
                   @enderror
@@ -81,7 +81,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="pieces_identite_permis">Numero pieces (identité ou permis) <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control mb-3 @error('pieces') is-invalid @enderror" name="pieces_identite_permis" id="pieces_identite_permis" placeholder="" required />
+                    <input type="text" class="form-control mb-3 @error('pieces') is-invalid @enderror" name="pieces_identite_permis" id="pieces_identite_permis"  data-url-pieces-exist="{{ route('pieces.exist') }}" data-token="{{ csrf_token() }}" required />
                     @error('pieces')
                       
                     @enderror
