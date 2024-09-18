@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="{{assets("assets/css/bootstrap.min.css")}}" />
 
+<link rel="stylesheet" href="{{asset("asset/lib/bootstrap/css/bootstrap.css")}}">
+
     <link
       rel="stylesheet"
       href="{{assets("assets/plugins/fontawesome/css/fontawesome.min.css")}}"

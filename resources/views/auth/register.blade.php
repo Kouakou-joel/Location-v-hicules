@@ -41,24 +41,24 @@
                   @csrf
 
                         <div class="mb-3">
-                        <label class="form-label" for="basic-form-name">Nom d'utilisateur <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="basic-form-name" placeholder="" />
+                        <label class="form-label" for="firstname" >Nom d'utilisateur <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="" />
                         </div>
                         <div class="mb-3">
-                        <label class="form-label" for="basic-form-email">E-mail <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="basic-form-email" placeholder="" />
+                        <label class="form-label" for="email">E-mail <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name=" email" placeholder="" />
                         </div>
                         <div class="mb-3">
-                        <label class="form-label" for="basic-form-password">Mot de passe <span class="text-danger">*</span></label>
+                        <label class="form-label" for="password">Mot de passe <span class="text-danger">*</span></label>
                         <div class="pass-group">
-                            <input type="password" class="form-control pass-input" id="basic-form-password" placeholder="" />
+                            <input type="password" name="password" class="form-control pass-input" id="password" placeholder="" />
                             <span class="fas fa-eye-slash toggle-password"></span>
                         </div>
                         </div>
 
                         <div class="mb-3">
-                        <label class="form-label" for="basic-form-dob">Date de naissance</label>
-                        <input class="form-control" id="basic-form-dob" type="date" />
+                        <label class="form-label" for="password-confirm">Confirmation Mot de passe</label>
+                        <input class="form-control" name="password-confirm" id="password-confirm" type="password" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="basic-form-gender">Genre</label>
@@ -80,7 +80,7 @@
                             <label class="form-check-label mb-0" for="flexRadioDefault2">Compte Professionnel</label>
                         </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">S'inscrire</button>
+                        <button type="submit"  name="register-user" class="btn btn-outline-light w-100 btn-size mt-1">S'inscrire</button>
                         <div class="login-or">
                         <span class="or-line"></span>
                         <span class="span-or">Ou, créez un compte avec votre e-mail</span>
