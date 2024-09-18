@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\UserController;
 
@@ -26,21 +27,33 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
 
+// Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
+
+
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
+
 //route pour l'authentication
 Route::group(['prefix' => 'auth'], function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('post-login', [AuthController::class, 'postLogin'])->name('post-login');
 });
 
 //route pour l'admin
 Route::group(['prefix' => 'phenix'], function () {
-    Route::get('/', [AdminController::class,'index'])->name('home-admin');
+    Route::post('/', [AdminController::class,'index'])->name('home-admin');
 });
 
-//route pour le compte client
-Route::group(['prefix' => 'customers'], function () {
+Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
+    Route::get('profile', [UserController::class, 'showProfile'])->name('customer.profile');
+    Route::put('profile/update', [UserController::class, 'updateProfile'])->name('customer.profile.update');
+    Route::get('reservations', [UserController::class, 'showReservations'])->name('customer.reservations');
+    Route::post('/check-email', [UserController::class, 'checkEmail'])->name('email.exist');
+    Route::post('/check-pieces', [UserController::class, 'checkPieces'])->name('pieces.exist');
 
+    // Ajoutez d'autres routes pour les fonctionnalités client ici
 
 });
 
