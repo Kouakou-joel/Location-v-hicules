@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB; // Ajout de l'import pour DB
 use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
@@ -19,6 +20,7 @@ class AuthController extends Controller
         }
         return view('auth.login');
     }
+
     /**
      * Gestion de la tentative de connexion.
      */
@@ -36,7 +38,6 @@ class AuthController extends Controller
                 'password.min' => 'Le mot de passe doit contenir au moins 4 caractères.',
             ]);
 
-
             // Récupération des informations du formulaire
             $credentials = $request->only('email', 'password');
 
@@ -50,9 +51,9 @@ class AuthController extends Controller
             }
         }
         catch (\Exception $e) {
-            // // Journaliser l'erreur
-            // Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage());
-            // return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
+            // Journaliser l'erreur pour diagnostic
+            Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
         }
     }
 
@@ -78,7 +79,37 @@ class AuthController extends Controller
         return redirect()->route('login')->with('info', 'Vous n\'étiez pas connecté.');
     }
 
-    public function forgotPassword(){
+    /**
+     * Réinitialisation du mot de passe
+     */
+    public function forgotPassword(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            // Validation de l'email
+            $request->validate([
+                'email' => 'required|email'
+            ], [
+                'email.required' => 'L\'email est requis.',
+                'email.email' => 'Veuillez entrer une adresse email valide.'
+            ]);
+
+            // Récupération de l'email du formulaire
+            $email = $request->input('email');
+
+            // Recherche de l'utilisateur dans la base de données
+            $user = DB::table('users')->where('email', $email)->first();
+
+            // Vérification si l'utilisateur existe
+            if ($user) {
+                 $full_name = $user->name;
+                 $activation_token = md5(uniqid()) . $email . sha1($email);
+                // Logique d'envoi de l'email de réinitialisation ici
+                // Par exemple : envoyer un lien de réinitialisation de mot de passe
+                return redirect()->back()->with('success', 'Un email de réinitialisation a été envoyé.');
+            } else {
+                return redirect()->back()->withErrors(['email' => 'Aucun utilisateur avec cet email n\'a été trouvé.']);
+            }
+        }
 
         return view("auth.forgot-password");
     }

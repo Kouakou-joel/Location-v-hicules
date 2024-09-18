@@ -30,7 +30,6 @@ Route::resource('users', UserController::class);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 
 
-
 Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
 
 //route pour l'authentication
