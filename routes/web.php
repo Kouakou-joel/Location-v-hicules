@@ -39,12 +39,14 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('post-login', [AuthController::class, 'postLogin'])->name('post-login');
+    Route::match(['get', 'post'], 'forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot-password');
 });
 
-//route pour l'admin
+// Route for the admin
 Route::group(['prefix' => 'phenix'], function () {
-    Route::post('/', [AdminController::class,'index'])->name('home-admin');
+    Route::match(['get', 'post'], 'home-admin', [AdminController::class, 'index'])->name('home-admin');
 });
+
 
 Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
     Route::get('profile', [UserController::class, 'showProfile'])->name('customer.profile');

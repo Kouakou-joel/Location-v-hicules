@@ -35,7 +35,7 @@ class AuthController extends Controller
                 'password.required' => 'Le mot de passe est requis.',
                 'password.min' => 'Le mot de passe doit contenir au moins 4 caractères.',
             ]);
-            
+
 
             // Récupération des informations du formulaire
             $credentials = $request->only('email', 'password');
@@ -48,10 +48,11 @@ class AuthController extends Controller
                 // Si l'authentification échoue
                 return redirect()->back()->withErrors(['email' => 'Email ou mot de passe incorrect.']);
             }
-        } catch (\Exception $e) {
-            // Journaliser l'erreur
-            Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
+        }
+        catch (\Exception $e) {
+            // // Journaliser l'erreur
+            // Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage());
+            // return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
         }
     }
 
@@ -75,5 +76,10 @@ class AuthController extends Controller
         }
 
         return redirect()->route('login')->with('info', 'Vous n\'étiez pas connecté.');
+    }
+
+    public function forgotPassword(){
+
+        return view("auth.forgot-password");
     }
 }

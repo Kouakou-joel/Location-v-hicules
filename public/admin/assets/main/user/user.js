@@ -109,19 +109,19 @@ $(document).ready(function() {
 
     // Fonction de vérification de l'existence de numéros de pièces via AJAX
     function piecesExistjs(pieces) {
-        var url = $('#pieces_identite_permis').data('url-pieces-exist'); 
-        var token = $('#pieces_identite_permis').data('token'); 
-    
+        var url = $('#pieces_identite_permis').data('url-pieces-exist');
+        var token = $('#pieces_identite_permis').data('token');
+
         if (!url || !token) {
             console.error("URL ou token manquant.");
             return Promise.reject('URL ou token manquant');
         }
-    
+
         return $.ajax({
             type: 'POST',
             url: url,
             headers: { 'X-CSRF-TOKEN': token },
-            data: { pieces: pieces }, 
+            data: { pieces: pieces },
             dataType: 'json'
         }).then(function(result) {
             return result.response === 'exist';
@@ -133,8 +133,8 @@ $(document).ready(function() {
 
     // Fonction de vérification de l'existence de l'email via AJAX
     function emailExistjs(email) {
-        var url = $('#email').data('url-email-exist'); 
-        var token = $('#email').data('token'); 
+        var url = $('#email').data('url-email-exist');
+        var token = $('#email').data('token');
 
         if (!url || !token) {
             console.error("URL ou token manquant.");
