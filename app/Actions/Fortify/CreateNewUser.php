@@ -35,9 +35,9 @@ class CreateNewUser implements CreatesNewUsers
         //     'phone' => ['required', 'string'], // Validation pour le numéro de téléphone
         // ])->validate();
 
-        $email = $input['email']; 
+        $email = $input['email'];
         $activation_token = md5(uniqid()) . $email . sha1($email);
-    
+
         // Génération du code d'activation à 5 chiffres
         $activation_code = "";
         $length_code = 5;
@@ -49,11 +49,11 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' =>  $email,
             'password' => Hash::make($input['password']),
-            'pieces_identite_permis' => $input['pieces_identite_permis'], 
+            'pieces_identite_permis' => $input['pieces_identite_permis'],
             'phone' => $input['phone'],
             'activation_code ' =>$activation_code,
-            'activation_token ' => $activation_token, 
-            
+            'activation_token ' => $activation_token,
+
         ]);
     }
 }
