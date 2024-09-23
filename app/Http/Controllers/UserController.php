@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\EmailService;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str; // Pour la génération du token d'activation
 
 class UserController extends Controller
 {
     /**
-     * Afficher la liste des utilisateurs
+     * Affiche la liste des utilisateurs.
      */
     public function index()
     {
@@ -20,7 +19,7 @@ class UserController extends Controller
     }
 
     /**
-     * Vérifier si un email existe déjà dans la base de données.
+     * Vérifie si un email existe déjà dans la base de données.
      */
     public function checkEmail(Request $request)
     {
@@ -29,7 +28,7 @@ class UserController extends Controller
     }
 
     /**
-     * Vérifier si les pièces d'identité existent déjà dans la base de données.
+     * Vérifie si les pièces d'identité existent déjà dans la base de données.
      */
     public function checkPieces(Request $request)
     {
@@ -38,7 +37,7 @@ class UserController extends Controller
     }
 
     /**
-     * Afficher le formulaire de création d'un nouvel utilisateur.
+     * Affiche le formulaire de création d'un nouvel utilisateur.
      */
     public function create()
     {
@@ -46,11 +45,11 @@ class UserController extends Controller
     }
 
     /**
-     * Enregistrer un nouvel utilisateur
+     * Enregistre un nouvel utilisateur.
      */
     public function register(Request $request)
     {
-        // Validation des données entrantes avec messages d'erreur personnalisés
+        // Validation des données avec messages d'erreur personnalisés
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:191|unique:users',
@@ -63,13 +62,8 @@ class UserController extends Controller
             'phone.regex' => 'Le numéro de téléphone doit contenir 10 chiffres.',
         ]);
 
-
-        // Génération d'un token d'activation unique
-        $email = $request->email;
-        // Génération d'un token d'activation aléatoire de 60 caractères
-
+        // Génération d'un token d'activation et d'un code d'activation
         $activation_token = bin2hex(random_bytes(30));
-        // Génération du code d'activation à 5 chiffres
         $activation_code = sprintf('%05d', mt_rand(0, 99999));
 
         // Création de l'utilisateur dans la base de données
@@ -83,23 +77,23 @@ class UserController extends Controller
             'activation_code' => $activation_code,
         ]);
 
-        //Envoi de l'email d'activation avec gestion des erreurs
+        // Envoi de l'email d'activation
         try {
-            $emailSend = new EmailService();
-            $subject = config('mail.activation_subject', 'Activate your account');
-            $message = "Hi " . $request->name . ", please activate your account. Copy your activation code: " . $activation_code .
-                       " or click the link below to activate your account: " . $activation_token;
-            $emailSend->sendEmail($subject, $email, $request->name, false, $message);
+            $emailService = new EmailService();
+            $subject = config('mail.activation_subject', 'Activation de votre compte');
+            $message = "Bonjour " . $request->name . ", veuillez activer votre compte en utilisant le code : " . $activation_code .
+                       " ou en cliquant sur ce lien : " . route('activation', ['token' => $activation_token]);
+            $emailService->sendEmail($subject, $request->email, $request->name, false, $message);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Échec de l\'envoi de l\'email d\'activation. Veuillez réessayer.');
         }
 
-        // Redirection avec un message de succès
+        // Redirection avec message de succès
         return redirect()->route('users.index')->with('success', 'Utilisateur créé avec succès.');
     }
 
     /**
-     * Afficher les détails d'un utilisateur.
+     * Affiche les détails d'un utilisateur.
      */
     public function show(User $user)
     {
@@ -107,7 +101,7 @@ class UserController extends Controller
     }
 
     /**
-     * Afficher le formulaire d'édition d'un utilisateur.
+     * Affiche le formulaire d'édition d'un utilisateur.
      */
     public function edit(User $user)
     {
@@ -115,11 +109,11 @@ class UserController extends Controller
     }
 
     /**
-     * Mettre à jour un utilisateur existant.
+     * Met à jour un utilisateur existant.
      */
     public function update(Request $request, User $user)
     {
-        // Validation des données avec messages personnalisés
+        // Validation des données avec messages d'erreur personnalisés
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
@@ -130,7 +124,7 @@ class UserController extends Controller
             'phone.regex' => 'Le numéro de téléphone doit contenir 10 chiffres.',
         ]);
 
-        // Mise à jour de l'utilisateur
+        // Mise à jour des informations de l'utilisateur
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -149,7 +143,7 @@ class UserController extends Controller
     }
 
     /**
-     * Supprimer un utilisateur.
+     * Supprime un utilisateur.
      */
     public function destroy(User $user)
     {

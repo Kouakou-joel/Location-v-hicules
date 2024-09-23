@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB; // Ajout de l'import pour DB
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
@@ -19,6 +20,33 @@ class AuthController extends Controller
             return redirect()->route('home-admin')->with('success', 'Vous êtes déjà connecté.');
         }
         return view('auth.login');
+    }
+
+    /**
+     * Affiche la liste des utilisateurs.
+     */
+    public function index()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
+
+    /**
+     * Vérifier si un email existe déjà dans la base de données.
+     */
+    public function checkEmail(Request $request)
+    {
+        $emailExists = User::where('email', $request->email)->exists();
+        return response()->json(['response' => $emailExists ? 'exist' : 'not-exist']);
+    }
+
+    /**
+     * Vérifier si les pièces d'identité existent déjà dans la base de données.
+     */
+    public function checkPieces(Request $request)
+    {
+        $piecesExists = User::where('pieces_identite_permis', $request->pieces)->exists();
+        return response()->json(['response' => $piecesExists ? 'exist' : 'not-exist']);
     }
 
     /**
@@ -40,19 +68,22 @@ class AuthController extends Controller
 
             // Récupération des informations du formulaire
             $credentials = $request->only('email', 'password');
+            $remember = $request->has('remember'); // Option "se souvenir de moi"
 
             // Tentative d'authentification
-            if (Auth::attempt($credentials)) {
-                // Authentification réussie, rediriger vers le tableau de bord
+            if (Auth::attempt($credentials, $remember)) {
+                // Authentification réussie, redirection vers le tableau de bord
                 return redirect()->route('home-admin')->with('success', 'Connexion réussie !');
             } else {
                 // Si l'authentification échoue
                 return redirect()->back()->withErrors(['email' => 'Email ou mot de passe incorrect.']);
             }
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             // Journaliser l'erreur pour diagnostic
-            Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage());
+            Log::error('Erreur lors de la tentative de connexion : ' . $e->getMessage(), [
+                'email' => $request->email,
+                'ip_address' => $request->ip(),
+            ]);
             return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
         }
     }
@@ -97,12 +128,12 @@ class AuthController extends Controller
             $email = $request->input('email');
 
             // Recherche de l'utilisateur dans la base de données
-            $user = DB::table('users')->where('email', $email)->first();
+            $user = User::where('email', $email)->first();
 
             // Vérification si l'utilisateur existe
             if ($user) {
-                 $full_name = $user->name;
-                 $activation_token = md5(uniqid()) . $email . sha1($email);
+                $full_name = $user->name;
+                $activation_token = md5(uniqid()) . $email . sha1($email);
                 // Logique d'envoi de l'email de réinitialisation ici
                 // Par exemple : envoyer un lien de réinitialisation de mot de passe
                 return redirect()->back()->with('success', 'Un email de réinitialisation a été envoyé.');

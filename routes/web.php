@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 
 
 Route::get('/', [HomeController::class,'index'])->name('home');
@@ -26,7 +27,7 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
-
+Route::resource('reservations', ReservationController::class,);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 
 
@@ -53,6 +54,9 @@ Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
     Route::get('reservations', [UserController::class, 'showReservations'])->name('customer.reservations');
     Route::post('/check-email', [UserController::class, 'checkEmail'])->name('email.exist');
     Route::post('/check-pieces', [UserController::class, 'checkPieces'])->name('pieces.exist');
+
+
+
 
     // Ajoutez d'autres routes pour les fonctionnalités client ici
 
