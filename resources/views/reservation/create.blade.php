@@ -1,6 +1,6 @@
 @extends("admin.base.base")
 
-@section('content')
+@section('content-admin')
 <div class="container">
     <h1>Créer une nouvelle réservation</h1>
 
@@ -31,7 +31,7 @@
             <label for="vehicule_id" class="form-label">Véhicule</label>
             <select name="vehicule_id" id="vehicule_id" class="form-select" required>
                 <option value="">Sélectionnez un véhicule</option>
-                @foreach ($vehicules as $vehicle)
+                @foreach ($vehicules as $vehicule)
                     <option value="{{ $vehicule->id }}">{{ $vehicule->name }}</option>
                 @endforeach
             </select>

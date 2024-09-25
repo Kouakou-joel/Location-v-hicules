@@ -298,29 +298,38 @@
                                             <line x1="16" y1="2" x2="16" y2="6"></line>
                                             <line x1="8" y1="2" x2="8" y2="6"></line>
                                         </svg>
+
                                     </span>
                                     <span class="nav-link-text">Réservations</span>
                                 </div>
                             </a>
                             <div class="parent-wrapper label-1">
                                 <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="reservation-management">
-                                    <li class="nav-item"><a class="nav-link" href="view-reservations.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Visualiser Réservations</span></div>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route("reservation.index")}}">
+                                            <div class="d-flex align-items-center">
+                                                <span class="nav-link-text">Liste des Réservations</span></div>
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="approve-reservations.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Approuver Réservations</span></div>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route("reservation.create")}}">
+                                            <div class="d-flex align-items-center">
+                                                <span class="nav-link-text">Creer la Réservation</span></div>
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="reject-reservations.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Rejeter Réservations</span></div>
+                                    {{-- <li class="nav-item">
+                                        <a class="nav-link" href="{{route("reservation.edit")}}">
+                                            <div class="d-flex align-items-center">
+                                                <span class="nav-link-text">Modifier la Réservation</span></div>
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="cancel-reservations.html">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text">Annuler Réservations</span></div>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route("reservation.show")}}">
+                                            <div class="d-flex align-items-center">
+                                                <span class="nav-link-text">Annuler la Réservation</span></div>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </li>

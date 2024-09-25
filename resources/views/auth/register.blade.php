@@ -120,7 +120,7 @@
                   <span class="or-line"></span>
                   <span class="span-or">Ou, créez un compte avec votre e-mail</span>
                 </div>
-
+{{--
                 <div class="social-login">
                   <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
                     <span><img src="{{ asset('assets/img/icons/google.svg') }}" class="img-fluid" alt="Google" /></span>
@@ -133,7 +133,7 @@
                     <span><img src="{{ asset('assets/img/icons/facebook.svg') }}" class="img-fluid" alt="Facebook" /></span>
                     Connectez-vous avec Facebook
                   </a>
-                </div>
+                </div> --}}
 
                 <div class="text-center dont-have">
                   Vous avez déjà un compte? <a href="{{ route('login') }}">Connectez-vous</a>

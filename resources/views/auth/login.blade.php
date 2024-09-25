@@ -95,7 +95,7 @@
                   <span class="span-or">Ou, connectez-vous avec votre e-mail</span>
                 </div>
 
-                <div class="social-login">
+                {{-- <div class="social-login">
                   <a href="{{ route('home-admin') }}" class="d-flex align-items-center justify-content-center input-block btn google-login w-100">
                     <span>
                       <img src="{{ asset('assets/img/icons/google.svg') }}" class="img-fluid" alt="Google" />
@@ -111,7 +111,7 @@
                     </span>
                     Connectez-vous avec Facebook
                   </a>
-                </div>
+                </div> --}}
 
                 <div class="text-center dont-have">
                   Vous n'avez pas encore de compte ?

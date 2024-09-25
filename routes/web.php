@@ -27,7 +27,7 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
-Route::resource('reservations', ReservationController::class,);
+Route::resource('reservation', ReservationController::class);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 
 

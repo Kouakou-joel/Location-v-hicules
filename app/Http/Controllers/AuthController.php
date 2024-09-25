@@ -110,6 +110,7 @@ class AuthController extends Controller
         return redirect()->route('login')->with('info', 'Vous n\'étiez pas connecté.');
     }
 
+
     /**
      * Réinitialisation du mot de passe
      */
