@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\VehiculeController;
 
 
 Route::get('/', [HomeController::class,'index'])->name('home');
@@ -28,6 +29,7 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
 Route::resource('reservation', ReservationController::class);
+Route::resource('vehicules', VehiculeController::class);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 
 

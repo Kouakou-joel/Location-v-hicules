@@ -20,7 +20,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:191|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'password' => 'required|string|min:4|',
             'pieces_identite_permis' => 'required|string',
             'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
         ], [
@@ -31,21 +31,21 @@ class RegisterController extends Controller
         ]);
 
         // Génération d'un token et d'un code d'activation
-        $activation_token = bin2hex(random_bytes(30)); // Token de 60 caractères
-        $activation_code = sprintf('%05d', mt_rand(0, 99999)); // Code à 5 chiffres
+        $activation_token = bin2hex(random_bytes(30));
+        $activation_code = sprintf('%05d', mt_rand(0, 99999));
 
         // Envoi de l'email d'activation
-        try {
-            $emailSend = new EmailService();
-            $subject = config('mail.activation_subject', 'Activate your account');
-            $message = "Bonjour " . $request->name . ",\n\nVeuillez activer votre compte. Copiez votre code d'activation : " . $activation_code .
-                "\n\nOu cliquez sur le lien suivant pour activer votre compte : " . url('/activate?token=' . $activation_token);
+        // try {
+        //     $emailService = new EmailService();
+        //     $subject = config('mail.activation_subject', 'Activate your account');
+        //     $message = "Bonjour " . $request->name . ",\n\nVeuillez activer votre compte. Copiez votre code d'activation : " . $activation_code .
+        //         "\n\nOu cliquez sur le lien suivant pour activer votre compte : " . url('/activate?token=' . $activation_token);
 
-            $emailSend->sendEmail($subject, $request->email, $request->name, false, $message);
-        } catch (\Exception $e) {
-            Log::error('Échec de l\'envoi de l\'email d\'activation : ' . $e->getMessage());
-            return redirect()->back()->withErrors('Échec de l\'envoi de l\'email d\'activation. Veuillez réessayer.');
-        }
+        //     $emailService->sendEmail($subject, $request->email, $request->name, false, $message);
+        // } catch (\Exception $e) {
+        //     Log::error('Échec de l\'envoi de l\'email d\'activation : ' . $e->getMessage());
+        //     return redirect()->back()->withErrors('Échec de l\'envoi de l\'email d\'activation. Veuillez réessayer.');
+        // }
 
         // Création de l'utilisateur
         try {

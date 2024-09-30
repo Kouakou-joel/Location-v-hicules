@@ -93,7 +93,7 @@
                                 </div>
                                 <span class="nav-link-icon"
                                   ><span data-feather="settings"></span></span
-                                ><span class="nav-link-text">Gestion des vehicules</span>
+                                ><span class="nav-link-text">liste des vehicules</span>
                               </div>
                             </a>
                             <div class="parent-wrapper label-1">
@@ -104,7 +104,7 @@
                               >
                                 <li class="collapsed-nav-item-title d-none">Gestion des vehicules</li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="../apps/email/inbox.html">
+                                  <a class="nav-link"#">
                                     <div class="d-flex align-items-center">
                                       <span class="nav-link-text">Type de Véhicule</span>
                                     </div> </a
@@ -120,20 +120,25 @@
                                     </div> </a
                                   ><!-- more inner pages-->
                                 </li>
+
                                 <li class="nav-item">
-                                  <a class="nav-link" href="../apps/email/compose.html">
-                                    <div class="d-flex align-items-center">
-                                      <span class="nav-link-text">Type de Carburant</span>
-                                    </div> </a
-                                  ><!-- more inner pages-->
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../apps/email/compose.html">
+                                    <a class="nav-link"
+                                      href="{{route("vehicules.index")}}">
+
                                       <div class="d-flex align-items-center">
                                         <span class="nav-link-text">Vehicules</span>
                                       </div> </a
                                     ><!-- more inner pages-->
                                   </li>
+
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="../apps/email/compose.html">
+                                      <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">Type de Carburant</span>
+                                      </div> </a
+                                    ><!-- more inner pages-->
+                                  </li>
+
                               </ul>
                             </div>
                           </div>

@@ -49,7 +49,7 @@
 
         <div class="mb-3">
             <label for="total_price" class="form-label">Prix total</label>
-            <input type="number" name="total_price" id="total_price" class="form-control" step="0.01" required>
+            <input type="number" name="total_price" id="total_price" class="form-control" step="1" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Créer la réservation</button>

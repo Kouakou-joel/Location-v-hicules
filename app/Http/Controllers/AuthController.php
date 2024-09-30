@@ -41,15 +41,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Vérifier si les pièces d'identité existent déjà dans la base de données.
-     */
-    public function checkPieces(Request $request)
-    {
-        $piecesExists = User::where('pieces_identite_permis', $request->pieces)->exists();
-        return response()->json(['response' => $piecesExists ? 'exist' : 'not-exist']);
-    }
-
-    /**
      * Gestion de la tentative de connexion.
      */
     public function postLogin(Request $request)
@@ -68,15 +59,14 @@ class AuthController extends Controller
 
             // Récupération des informations du formulaire
             $credentials = $request->only('email', 'password');
-            $remember = $request->has('remember'); // Option "se souvenir de moi"
-
+            $remember = $request->has('remember');
             // Tentative d'authentification
             if (Auth::attempt($credentials, $remember)) {
                 // Authentification réussie, redirection vers le tableau de bord
                 return redirect()->route('home-admin')->with('success', 'Connexion réussie !');
             } else {
                 // Si l'authentification échoue
-                return redirect()->back()->withErrors(['email' => 'Email ou mot de passe incorrect.']);
+                return redirect()->back()->withErrors(['email' => 'Email incorrect.'] );
             }
         } catch (\Exception $e) {
             // Journaliser l'erreur pour diagnostic
@@ -136,7 +126,6 @@ class AuthController extends Controller
                 $full_name = $user->name;
                 $activation_token = md5(uniqid()) . $email . sha1($email);
                 // Logique d'envoi de l'email de réinitialisation ici
-                // Par exemple : envoyer un lien de réinitialisation de mot de passe
                 return redirect()->back()->with('success', 'Un email de réinitialisation a été envoyé.');
             } else {
                 return redirect()->back()->withErrors(['email' => 'Aucun utilisateur avec cet email n\'a été trouvé.']);

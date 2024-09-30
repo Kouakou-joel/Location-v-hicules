@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\EmailService;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -16,24 +17,6 @@ class UserController extends Controller
     {
         $users = User::all();
         return view('users.index', compact('users'));
-    }
-
-    /**
-     * Vérifie si un email existe déjà dans la base de données.
-     */
-    public function checkEmail(Request $request)
-    {
-        $emailExists = User::where('email', $request->email)->exists();
-        return response()->json(['response' => $emailExists ? 'exist' : 'not-exist']);
-    }
-
-    /**
-     * Vérifie si les pièces d'identité existent déjà dans la base de données.
-     */
-    public function checkPieces(Request $request)
-    {
-        $piecesExists = User::where('pieces_identite_permis', $request->pieces)->exists();
-        return response()->json(['response' => $piecesExists ? 'exist' : 'not-exist']);
     }
 
     /**
@@ -49,7 +32,7 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        // Validation des données avec messages d'erreur personnalisés
+        // Validation des données avec des messages d'erreur personnalisés
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:191|unique:users',
@@ -62,12 +45,12 @@ class UserController extends Controller
             'phone.regex' => 'Le numéro de téléphone doit contenir 10 chiffres.',
         ]);
 
-        // Génération d'un token d'activation et d'un code d'activation
-        $activation_token = bin2hex(random_bytes(30));
-        $activation_code = sprintf('%05d', mt_rand(0, 99999));
+        // Génération d'un token et d'un code d'activation
+        $activation_token = $this->genererTokenActivation();
+        $activation_code = $this->genererCodeActivation();
 
-        // Création de l'utilisateur dans la base de données
-        User::create([
+        // Création de l'utilisateur avec hachage du mot de passe
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -80,16 +63,33 @@ class UserController extends Controller
         // Envoi de l'email d'activation
         try {
             $emailService = new EmailService();
-            $subject = config('mail.activation_subject', 'Activation de votre compte');
-            $message = "Bonjour " . $request->name . ", veuillez activer votre compte en utilisant le code : " . $activation_code .
-                       " ou en cliquant sur ce lien : " . route('activation', ['token' => $activation_token]);
+            $subject = config('mail.activation_subject', 'Activez votre compte');
+            $message = "Bonjour " . $request->name . ",\n\nVeuillez activer votre compte. Copiez votre code d'activation : " . $activation_code .
+                "\n\nOu cliquez sur le lien suivant pour activer votre compte : " . url('/activate?token=' . $activation_token);
+
             $emailService->sendEmail($subject, $request->email, $request->name, false, $message);
         } catch (\Exception $e) {
+            Log::error("Échec de l'envoi de l'email d'activation : " . $e->getMessage());
             return redirect()->back()->withErrors('Échec de l\'envoi de l\'email d\'activation. Veuillez réessayer.');
         }
 
-        // Redirection avec message de succès
-        return redirect()->route('users.index')->with('success', 'Utilisateur créé avec succès.');
+        return redirect()->route('users.index')->with('success', 'Utilisateur enregistré avec succès. Un email d\'activation a été envoyé.');
+    }
+
+    /**
+     * Génère un token d'activation.
+     */
+    private function genererTokenActivation()
+    {
+        return bin2hex(random_bytes(30));
+    }
+
+    /**
+     * Génère un code d'activation.
+     */
+    private function genererCodeActivation()
+    {
+        return sprintf('%05d', mt_rand(0, 99999));
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // Validation des données avec messages d'erreur personnalisés
+        // Validation des données avec des messages d'erreur personnalisés
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
@@ -132,7 +132,7 @@ class UserController extends Controller
             'phone' => $request->phone,
         ]);
 
-        // Mise à jour du mot de passe si présent
+        // Mise à jour du mot de passe si fourni
         if ($request->filled('password')) {
             $user->update([
                 'password' => Hash::make($request->password),

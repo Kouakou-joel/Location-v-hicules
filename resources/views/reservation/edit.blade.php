@@ -1,6 +1,6 @@
 @extends("admin.base.base")
 
-@section('content')
+@section('content-admin')
 <div class="container">
     <h1>Modifier la réservation</h1>
 

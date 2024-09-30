@@ -42,7 +42,7 @@ $(document).ready(function() {
             }
         } else {
             $('#password').addClass('is-invalid').removeClass('is-valid');
-            alert('Le mot de passe doit comporter au moins 8 caractères.');
+            alert('Le mot de passe doit comporter au moins 4 caractères.');
             isValid = false;
         }
 
