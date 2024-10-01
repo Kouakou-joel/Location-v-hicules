@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('price_per_day')->nullable();
             $table->string('location')->nullable();
             $table->string('availability')->nullable();
-            $table->string('dscription');
+            $table->string('description');
             $table->string('images');
             $table->string('capacite');
             $table->string('transmission');

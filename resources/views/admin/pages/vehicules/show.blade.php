@@ -18,7 +18,7 @@
             <p class="card-text"><strong>Année :</strong> {{ $vehicule->year }}</p>
             <p class="card-text"><strong>Prix par jour :</strong> {{ number_format($vehicule->price_per_day, 2, ',', ' ') }} €</p>
             <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->availability }}</p>
-            <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->dscription  }}</p>
+            <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->description  }}</p>
             <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->images }}</p>
             <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->capacite }}</p>
             <p class="card-text"><strong>Véhicule :</strong> {{ $vehicule->vehicule->transmission }}</p>
