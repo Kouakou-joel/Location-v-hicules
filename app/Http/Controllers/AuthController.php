@@ -74,7 +74,7 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'ip_address' => $request->ip(),
             ]);
-            return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
+             return redirect()->back()->with('error', 'Une erreur est survenue, veuillez réessayer.');
         }
     }
 
