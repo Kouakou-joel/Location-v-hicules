@@ -372,7 +372,7 @@
                                     <li class="nav-item"><a class="nav-link" href="add-payment.html">
                                         <div class="d-flex align-items-center"><span class="nav-link-text">Modes de paiement
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="view-payments.html">
+                                    <li class="nav-item"><a class="nav-link" href="{{route("payements.index")}}">
                                             <div class="d-flex align-items-center"><span class="nav-link-text">Liste des Paiements</span></div>
                                         </a>
                                     </li>

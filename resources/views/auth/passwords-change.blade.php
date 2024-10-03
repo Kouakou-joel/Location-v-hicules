@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=0"
     />
-    <title>Mot de passe oublié | page</title>
+    <title>Changer le mot de passe| page</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png" />
 
@@ -38,41 +38,46 @@
               </div>
 
               <!-- Affichage des erreurs -->
-              @if(session('error'))
-                <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+              @if(session('success'))
+                <div class="alert alert-primary" role="alert">{{ session('success') }}</div>
               @endif
 
-              <h1>Mot de passe oublé</h1>
-              <p class="account-subtitle">
-                Veuillez entrez votre email <br>
-                Nous vous enverrons un code de confirmation par e-mail.
-              </p>
+              <h1>Changer votre mot de passe</h1>
+
 
               <!-- Formulaire de connexion -->
-              <form action="{{ route('post-login') }}" method="POST" id="form-register">
+              <form action="{{ route('passwords.update') }}" method="POST" >
                 @csrf
+                  @method('PUT')
 
                 <div class="mb-3">
-                  <label class="form-label" for="form-email">
-                    E-mail <span class="text-danger">*</span>
+                  <label class="form-label" for="form-current_password">
+                     Mot de passe actuel <span class="text-danger">*</span>
                   </label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="form-email" name="email"  value="{{ old('email') }}"  autocomplete="email"  required autofocus aria-describedby="emailHelp" />
-                  @error('email')
+                  <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="form-current_password" name="current_password"  value="{{ old('current_password') }}"  autocomplete="current_password"  required autofocus aria-describedby="current_password" />
+                  @error('current_password')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
-                <div class="input-block">
-                    <a class="forgot-link" href="{{ route('passwords-change') }}">Changer votre mot de passe</a>
-                    </div>
 
+                <div class="mb-3">
+                    <label class="form-label" for="form-password">
+                     Nouveau mot de psse <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="form-password" name="password"  value="{{ old('password') }}"  autocomplete="password"  required autofocus aria-describedby="password" />
+                    @error('password')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="form-password_confirm">
+                    Confirmer le nouveau mot de passe</label>
+                    <input type="password_confirm" class="form-control id="form-password_confirm" name="password_confirm"  value="{{ old('password_confirm') }}"  autocomplete="password_confirm"  required autofocus aria-describedby="password_confirm" />
+                  </div>
                 <button type="submit" class="btn btn-primary w-100 btn-size mt-1">
-                  Valider
+                 Mettre à jour votre mot de passe
                 </button>
-
-                <div class="text-center dont-have">
-                 Se souvenir de votre mot de passe
-                  <a href="{{ route('login') }}">Se connecter</a>
-                </div>
               </form>
             </div>
           </div>

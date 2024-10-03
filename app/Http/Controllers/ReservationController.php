@@ -47,6 +47,11 @@ class ReservationController extends Controller
             'status' => 'pending',
         ]);
 
+
+
+
+
+
         return response()->json($reservation, 201);
     }
 

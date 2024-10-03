@@ -6,10 +6,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
+use App\Http\Controllers\PayementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VehiculeController;
-
+use Laravel\Fortify\Http\Controllers\PasswordController;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 // Contact
@@ -31,7 +32,7 @@ Route::resource('users', UserController::class);
 Route::resource('reservation', ReservationController::class);
 Route::resource('vehicules', VehiculeController::class);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
-
+Route::resource('payements', PayementController::class);
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
 
@@ -56,6 +57,8 @@ Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
     Route::get('reservations', [UserController::class, 'showReservations'])->name('customer.reservations');
     Route::post('/check-email', [UserController::class, 'checkEmail'])->name('email.exist');
     Route::post('/check-pieces', [UserController::class, 'checkPieces'])->name('pieces.exist');
+    Route::get('/passwords-change', [PasswordController::class, 'edit'])->name('passwords.change');
+    Route::get('/passwords-change', [PasswordController::class, 'update'])->name('passwords.update');
 
 
 
