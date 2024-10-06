@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Hash;
 class PasswordController extends Controller
 {
     // Afficher le formulaire de changement de mot de passe
-    public function edit()
+    public function showChangePasswordForm()
     {
         return view('auth.passwords-change');
     }
 
     // Mise à jour du mot de passe
-    public function update(Request $request)
+    public function updatepassword(Request $request)
     {
         // Valider les champs
         $request->validate([

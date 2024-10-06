@@ -64,7 +64,7 @@
                     <label class="form-label" for="form-password">
                      Nouveau mot de psse <span class="text-danger">*</span>
                     </label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="form-password" name="password"  value="{{ old('password') }}"  autocomplete="password"  required autofocus aria-describedby="password" />
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="form-password" name="password"  autocomplete="password" />
                     @error('password')
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

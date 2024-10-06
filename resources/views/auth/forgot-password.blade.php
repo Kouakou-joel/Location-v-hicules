@@ -61,9 +61,10 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
-                <div class="input-block">
-                    <a class="forgot-link" href="{{ route('passwords-change') }}">Changer votre mot de passe</a>
-                    </div>
+
+                {{-- <div class="input-block">
+                    <a class="change-link" href="{{route('passwords.update') }}">Changer votre mot de passe</a>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary w-100 btn-size mt-1">
                   Valider
