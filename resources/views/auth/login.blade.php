@@ -34,7 +34,7 @@
           <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="d-none d-xl-flex align-items-center justify-content-center h-n80">
-                        <img src="{{ asset('assets/img/Login-pana.svg') }}" width="500" class="img-fluid"
+                        <img src="{{ asset('assets/img/login-pana (2).svg') }}" width="500" class="img-fluid"
                         alt="connexion"
                         />
                    </div>

@@ -175,11 +175,11 @@
                             </a>
                             <div class="parent-wrapper label-1">
                                 <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="client-management">
-                                    <li class="nav-item"><a class="nav-link" href="add-client.html">
+                                    <li class="nav-item"><a class="nav-link" href="{{route('users.create')}}">
                                             <div class="d-flex align-items-center"><span class="nav-link-text">Ajouter Client</span></div>
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="clients.html">
+                                    <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}">
                                             <div class="d-flex align-items-center"><span class="nav-link-text">Liste des Clients</span></div>
                                         </a>
                                     </li>

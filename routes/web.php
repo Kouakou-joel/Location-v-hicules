@@ -8,7 +8,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MakeController;
 use App\Http\Controllers\PasswordController ;
 use App\Http\Controllers\PayementController;
+// use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VehiculeController;
 
@@ -29,11 +31,12 @@ Route::get('/offers', [HomeController::class, 'offers'])->name('offers');
 
 Route::resource('makes', MakeController::class);
 Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
 Route::resource('reservation', ReservationController::class);
 Route::resource('vehicules', VehiculeController::class);
 // Route::post('/register', [App\Http\Controllers\RegistrationController::class, 'store'])->name('home-admin');
 Route::resource('payements', PayementController::class);
-
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
 
 
@@ -54,6 +57,9 @@ Route::group(['prefix' => 'phenix'], function () {
 
 Route::group(['prefix' => 'customers', 'middleware' => 'auth'], function () {
     Route::get('profile', [UserController::class, 'showProfile'])->name('customer.profile');
+
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
     Route::put('profile/update', [UserController::class, 'updateProfile'])->name('customer.profile.update');
     Route::get('reservations', [UserController::class, 'showReservations'])->name('customer.reservations');
     Route::post('/check-email', [UserController::class, 'checkEmail'])->name('email.exist');
